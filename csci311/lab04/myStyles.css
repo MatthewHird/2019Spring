@@ -1,0 +1,60 @@
+header, footer{
+	text-align: center;
+	background-color: black;
+	color: white;
+	
+}
+#main{
+	min-height: 320px;
+}
+header h1{
+	text-shadow: 2px 2px 2px;
+}
+body {
+	background-color: #eddede;
+	padding: 0px 10px;
+}
+ul.myNav li{
+	display: inline;
+	padding: 5px 20px;
+	background-color: lightgray;
+	border: 2px solid gray;
+	margin: 2px;
+}
+
+.inputRow{
+	
+	padding: 10px;
+}
+.myLabel{
+	margin: 0; 
+  	padding: 0; 
+  	display: block; 
+ 	font-size: 100%; 
+  	padding-top: 2px; 
+  	padding-right: 5px; 
+  	width: 200px; 
+  	text-align: right; 
+  	float: left; 
+}
+
+
+.myInput{
+	margin: 0; 
+  	padding: 0; 
+  	display: block; 
+  	font-size: 100%; 
+  	width: 200px;
+  	padding-left: 5px;
+	/*border:1px solid green;*/
+}
+input[type='submit']{
+	width: 100px;
+	margin-left: 320px;
+}
+input:invalid{
+	border: 1px dashed red;
+}
+input:valid{
+	border: 1px solid black;
+}

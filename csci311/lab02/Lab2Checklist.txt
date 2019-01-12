@@ -1,0 +1,19 @@
+Lab 2 Self-Assessment Checklist
+Conduct and submit a self-assessment by creating and checking the following checklists:
+
+ - All Specifications are met (list any that are not)
+
+ - All Requirements are met (list any that are not)
+
+ - All Code Readability, and Comments are met (list any that are not)
+
+Identify, for each of the items above:
+ - ALL that correctly achieved
+ - ALL that are not correctly achieved. 
+Your assessment will be marked based on its correctness, so be honest!
+ - If you are unable to achieve one of the specifications, requirements, etc., this is the place to reflect on why.  
+ Reasons may include:
+ - ran out of time didn't understand how
+ - instructions were unclear (be specific, and constructive)
+ - it was not possible (describe what steps you took to determine this)
+ - found a better/alternate way to complete it (if you didn't get prior permission, you may lose marks for doing this)
