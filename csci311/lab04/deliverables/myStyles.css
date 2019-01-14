@@ -1,0 +1,130 @@
+/*  
+  author: Matthew Hird
+  csciId: hirdm
+  date: Jan 13, 2019
+  links: 
+*/
+
+header, footer{
+	text-align: center;
+	background-color: black;
+	color: white;
+	
+}
+#main{
+	min-height: 320px;
+}
+header h1{
+	text-shadow: 2px 2px 2px;
+}
+body {
+	background-color: #eddede;
+	padding: 0px 10px;
+}
+ul.myNav li{
+	display: inline;
+	padding: 5px 20px;
+	background-color: lightgray;
+	border: 2px solid gray;
+	margin: 2px;
+}
+
+.inputRow{
+	
+	padding: 10px;
+}
+.myLabel{
+	margin: 0; 
+  	padding: 0; 
+  	display: block; 
+ 	font-size: 100%; 
+  	padding-top: 2px; 
+  	padding-right: 5px; 
+  	width: 200px; 
+  	text-align: right; 
+  	float: left; 
+}
+
+
+.myInput{
+	margin: 0; 
+  	padding: 0; 
+  	display: block; 
+  	font-size: 100%; 
+  	width: 200px;
+  	padding-left: 5px;
+	/*border:1px solid green;*/
+}
+input[type='submit']{
+	width: 100px;
+	margin-left: 320px;
+}
+input:invalid{
+	border: 1px dashed red;
+}
+input:valid{
+	border: 1px solid black;
+}
+
+#calcWidget {
+    margin: 5px;
+    border: 4px solid black;
+    border-radius: 20px;
+    width: 350px;
+    background-color: #888888;
+}
+
+#currentFormula {
+    resize: none;
+}
+
+#calcWidget #calcWidgeInner {
+    width: 90%;
+    margin: 5%;
+}
+
+#calcWidget fieldset {
+    border: none;
+}
+
+#calcWidget .myInput {
+    width: calc(100% - 9px);
+    border-radius: 5px;
+    border: 2px solid #444444;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+}
+
+#calcWidget .myInput:disabled, #calcWidget .myInput:disabled:hover {
+    opacity: 0.6;
+}
+
+#calcWidget .mySelect {
+    width: 100%;
+    background-color: white;
+}
+
+#calcWidget .myButton {
+    display: block;
+    float: both;
+    border: 2px outset #555555;
+    border-radius: 7px;
+    background-color: #444444;
+    color: white;
+
+    width: 100%;
+}
+
+#calcWidget .myButton:hover {
+    opacity: 0.8;
+}
+
+#calcWidget .myLabel {
+    display: block;
+    width: 100%;
+    text-align: left;
+    float: both;
+}
+
+.calcWidget input[type='button'] {
+    width: 100px;
+}

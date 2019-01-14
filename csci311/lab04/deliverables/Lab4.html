@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!-- 
+  author: Matthew Hird
+  csciId: hirdm
+  date: Jan 13, 2019
+  links: 
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Lab 4: Debugging JavaScript Errors</title>
+    <!-- Code standards/syntax error. xhtml standards dictate that open tags must end with "/>".
+         ">" will be replaced by " />" at the end of the link tag -->
+    <link rel="stylesheet" type="text/css" href="myStyles.css" />
+    <!-- Efficiency error. Scripts should be loaded after the page loads to improve load times.
+         "errors.js" is now imported at the end of the file. -->
+
+    <!-- Code standards error. Client side scripts should be placed in an external file and loaded
+         at the end of the file to reduce page load times. For this exercise I've left the script code
+         here commented out for marking purposes, but the actual code will be moved to "errors.js",
+         which is loaded at the bottom of this file. -->
+    <!-- Code standards error. Comments should be tabbed in the same amount as the line below it. -->
+    <script>
+//    //should be called on load of page
+//    //opens a prompt to get user's name to customize page
+//    
+//        // Code standards error. "doAThing()" is a terrible name for a function. Give it a more
+//        // descriptive name like "namePrompt()". "name" and "el" aren't great names either.
+//        function namePrompt() {
+//            // Security error. User entered text in inserted directly into document without sanitizing 
+//            // it. This leaves page vulnerable to malicious users who want to insert html code (though
+//            // the risks are lessened because the code is only used client side). I will not correct
+//            // this now because we haven't learned about this in class yet.
+//            var nameEntered = window.prompt("Hi there, what's your name?", "Thor");
+//            var userNameElement = document.getElementById("userName");
+//            userNameElement.innerHTML = "Hi " + nameEntered + ", welcome!";
+//        }
+//        //gets the colour from the colour picker, and uses it to set the text colour
+//        //of the div with the lorem ipsum text
+//        function changeColour() {
+//            // Unneccessary variables. document.getElementById("myColor").value; would 
+//            // give color value in a single statement. "col" could be declared and 
+//            // assigned a value in one step. Poor variable names. change "col" to "userColor". 
+//            var userColor = document.getElementById("myColor").value;
+//            // Logical error/documentation error. Sets background-color when comment says 
+//            // it should set text color. Change ".backgroundColor" to ".color"
+//            document.getElementById("loremText").style.color = userColor;
+//        }
+    </script>
+    <style>
+        /* Code standards and readability errors. Should put all style rules one can in an
+           external stylesheet unless absolutely neccessary. Also, style rules are in an order 
+           that's awkward to read. Could be ordered in a more logical fashion. 
+           *update* I have not moved this style block as there might be a reason the coder didn't
+           want it in the myStyles.css file (thought it could be put in its own separate css file). */
+        div.square {
+            position: absolute;
+            top: 30%;
+            left: 70%;
+            width:200px;
+            height:200px;
+            vertical-align: middle;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200%;
+            border: 3px solid red;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<!-- Syntax error. A function called by "onload" needs "()" to indicate the function is 
+     being called. Otherwise, the function won't be run at all. -->
+<body onload="namePrompt()"> 
+    <header>
+        <h1>Debugging JavaScript</h1>
+    </header>
+    
+    <div id="main">
+        <ul class="myNav">
+            <!-- Presentation error. "home" should be capitalized (unless the coder is 
+                 not the content creator and/or the capitalization was done intentionally) -->
+            <li class="pagelink"><a href="./index.html">Home</a></li>
+            <li class="pagelink"><a href="./Lab4.html">Lab 4</a></li>
+            <li class="pagelink"><a href="./L4Calc.html">Calculator</a></li>
+        </ul>
+        
+        <!-- Code standards error. "name" is too generic of an id value. Change it to
+             "userName" -->
+        <h2 id="userName">This is a heading</h2>
+        <!-- Coding standards error. Multiline block content should be tabbed in. -->
+        <p id="loremText">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        
+        <div id="changeColourWidget" class="myWidget">
+            <!-- Code standards/presentation error. Colour picker and button aren't grouped together.
+                 All related "inputRow"s should be wrapped in a named <div> element. -->
+            <div class="inputRow">
+                <!-- Presentation error. Colour picker doesn't tell user what picking the colour 
+                     does. Should include a description of some kind -->
+                <label for="myColor">Pick a colour for paragraph text above:</label>
+                <input name="myColor" id="myColor" type="color" />
+            </div>
+            <!-- Code standards error. The spacing between element tags is awkward and inconsistent,
+                 and some nested element tags aren't tabbed in properly. Element tags should be
+                 grouped in meaningful ways, and blank lines should be used to make code easier 
+                 to read. All lines that are nested within a set of tags should be tabbed in one
+                 more time than their parent. -->
+            <div class="inputRow">
+                <!-- Presentation error. Having the button text read "Change me!" suggests that
+                     clicking the button will change the button colour when it really changes the 
+                     loremText background-color, and it's supposed to change the loremText text 
+                     color. Changing it to read "Change Text Colour" would be more meaningful to 
+                     the user -->
+                <button type="button" onclick="changeColour()">Change text colour!</button>
+            </div>
+        </div>
+        
+        <div id="adderWidget" class="myWidget">
+            <!-- Code standards/presentation error. xVal, yVal, answer and button aren't grouped
+                 together. All related "inputRow"s should be wrapped in a named <div> element. -->
+            <div class="inputRow">
+                <!-- Code standards error. The xVal, yVal and answer labels have 2 spaces before 
+                     and after the first class attribute, and there are 2 spaces after the name
+                     attribute in the associated input tags. There should be consistent spacing
+                     used throughout the code. The double spaces should be reduced to single 
+                     spaces. -->
+                <!-- Synax error. The "for" attribute value must match an input tag's "id" value, not its
+                     "name" value. for="xVal" should be changed to for="xValue" to match the id value -->
+                <label for="xValue" class="myLabel">X Value</label>
+                <!-- xVal, yVal and answer <input> tags need id attribute values so they
+                     can be accessed by the "compute()" function in "errors.js". -->
+                <input id="xValue" class="myInput" type="number" min="1" max="99" name="xVal" value="1" /> 
+            </div>
+            
+            <div class="inputRow">
+                <!-- Code standards/syntax error. The xVal, yVal and answer labels have the
+                     class attribute listed twice. This could cause a syntax error (invalidating 
+                     the element), could cause the class value to get over written, or could cause
+                     confusion for someone trying to read and work with the code. The extra class
+                     attribute should be deleted. -->
+                <label for="yValue" class="myLabel">Y Value</label>
+                <!-- Synax error. The "for" attribute value must match an input tag's "id" value, not its
+                     "name" value. for="yVal" should be changed to for="yValue" to match the id value -->
+                <input id="yValue" class="myInput" type="number" min="1" max="99" name="yVal" value="1" /> 
+            </div>
+            
+            <div class="inputRow">
+                <!-- Synax error. The "for" attribute value must match an input tag's "id" value, not its
+                     "name" value. for="answer" should be changed to for="xYAnswer" to match the id value -->
+                <label for="xYAnswer" class="myLabel">Answer</label>
+                <!-- Logic error. The answer value is created by adding xVal to yVal. Both xVal
+                     and yVal have a max attribute of 99, meaning the result of adding them could
+                     possibly have a value of 198. The max value of the answer input is 99. This
+                     value should be increased to 198 to reflect this fact.
+                     *update* Upon testing, it doesn't really matter as the field is readonly,
+                     so the user never interacts with answer box, and setting the value using
+                     JavaScript ignores the min and max attributes anyways. -->
+                <!-- In xhtml, attribute minimization is forbidden. The readonly attribute must be defined as readonly="readonly" -->
+                <input id="xYAnswer" class="myInput" type="number" min="1" max="99" name="answer" readonly="readonly" />
+            </div>
+
+            <div class="inputRow">
+                <!-- Code standards/presentation error. Doesn't explain to the user (or coder) what 
+                     computation is being made. Could change "Compute" to "Compute X + Y" -->
+                <button type="button" onclick="compute()">Compute X + Y</button>
+            </div>
+        </div>
+        
+        <!-- Code standards/presentation error. The comments don't explain the purpose of this
+             element to coders, and it is also not explained to the user in any way. Its 
+             display location is very awkward as it sits on top of other elements. It should
+             at the very least be explained in a comment. Also block content could be tabbed in 
+             (is fine either way because it is short). -->
+
+        <!-- This element will move to a rondom location within the window when it is clicked. -->
+        <div id="randomSquare" class="square" onclick="moveMe()">
+            Click Me!
+        </div>     
+    </div>
+
+    <footer>
+        <small>Copyright &copy; Sarah Carruthers, 2018</small>
+    </footer>
+    
+    <script type="text/javascript" src="errors.js"></script>
+</body>
+</html>

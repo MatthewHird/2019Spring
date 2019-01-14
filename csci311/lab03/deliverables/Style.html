@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- 
+  author: Matthew Hird
+  csciId: hirdm
+  date: Jan 12, 2019
+  links: 
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Styling Forms - Matt's Lab 3</title>
+    <link rel="stylesheet" type="text/css" href="myStyles.css"/>
+  </head>
+  <body>
+    <header>
+      <h1>Styling Forms</h1>
+    </header>
+    <div id="main">
+      <ul class="myNav">
+        <li class="pagelink"><a href="./index.html" tabindex="1">Home</a></li>
+        <li class="pagelink"><a href="./Lab3.html" tabindex="8">Forms</a></li>
+        <li class="pagelink"><a href="./Style.html" tabindex="9">Styling Forms</a></li>
+      </ul>
+      
+      <div id="styleform">
+        <form class="formal" action="processForm.php" method="POST">
+          <div class="inputRow">
+            <label for="yourName" class="myLabel">Your Name</label>
+            <input class="myInput" type="text" name="yourName" tabindex="2" 
+                placeholder="Firstname (required)" required="required"
+                pattern="^[A-Za-z]{2,}$" />
+          </div>
+          <div class="inputRow">
+            <label for="email" class="myLabel">Email</label>
+            <input class="myInput" type="email" name="email" tabindex="3" 
+                required="required" placeholder="yourEmail@domain.com (required)"
+                pattern="[A-Za-z]+@[A-Za-z]+\.[A-Za-z]{2,3}" />
+          </div>
+          <div class="inputRow">
+            <label for="username" class="myLabel">Username</label>
+            <input class="myInput" type="text" name="username" tabindex="4" 
+                required="required" placeholder="username45 (required)"
+                pattern="[A-Za-z]+[0-9]*" />
+          </div>
+          <div class="inputRow">
+            <label for="province" class="myLabel">Province</label>
+            <select class="myInput mySelect" name="province" size="1" tabindex="5">
+              <option value="AB">Alberta</option>
+              <option value="BC" selected="selected">British Columbia</option>
+              <option value="MB">Manitoba</option>
+              <option value="NB">New Brunswick</option>
+              <option value="NL">Newfoundland and Labrador</option>
+              <option value="NT">Northwest Territories</option>
+              <option value="NS">Nova Scotia</option>
+              <option value="NU">Nunavut</option>
+              <option value="ON">Ontario</option>
+              <option value="PE">Prince Edward Island</option>
+              <option value="QC">Quebec</option>
+              <option value="SK">Saskatchewan</option>
+              <option value="YT">Yukon</option>
+            </select>
+          </div>
+          <div class="inputRow">
+            <label for="postalCode" class="myLabel">Postal Code</label>
+            <input class="myInput" type="text" name="postalCode" tabindex="6"
+                required="required" placeholder="A1A 1A1 (required)" 
+                pattern="[A-Za-z][0-9][A-Za-z][ ]?[0-9][A-Za-z][0-9]" />
+          </div>
+          <div class="inputRow">
+            <input class="mySubmit" type="submit" name="go" value="Go!" tabindex="7" />
+          </div>
+        </form>
+      </div>
+
+      <footer>
+        <small>Copyright &copy; Matthew Hird, 2019</small>
+      </footer>
+    </div>
+  </body>
+</html>
