@@ -1,0 +1,28 @@
+package ca.viu.csci331.lab1;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+public class hey {
+
+	@Test
+	public void testGreet() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGreetString() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetText() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetText() {
+		fail("Not yet implemented");
+	}
+
+}

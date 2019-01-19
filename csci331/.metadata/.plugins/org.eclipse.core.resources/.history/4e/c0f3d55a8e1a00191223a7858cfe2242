@@ -1,0 +1,13 @@
+package ca.viu.csci331.lab1;
+
+public class Greet {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
