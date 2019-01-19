@@ -1,9 +1,0 @@
-package ca.viu.csci331.lab1;
-
-import 
-
-public class GreetTests {
-	private String text;
-	
-
-}
