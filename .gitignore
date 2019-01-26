@@ -1,0 +1,10 @@
+
+csci331/\.metadata/
+
+csci331/*/\.project
+
+csci331/*/\.classpath
+
+csci331/*/\.settings/
+
+csci331/*/bin/
