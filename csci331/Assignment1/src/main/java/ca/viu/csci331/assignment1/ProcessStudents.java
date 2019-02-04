@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * A class to store and manage <Student> objects. Can add students, remove students by id, search for 
+ * students by name or id, search for the student with the best or worst gpa, display all student 
+ * information, or reorder students based on gpa. 
  * 
  * @author Matthew Hird
  * @date Jan. 26, 2019
@@ -14,23 +17,27 @@ public class ProcessStudents {
     private List<Student> students;
     
     /**
+     * The primary class constructor.
      * 
-     * @param studentCount
+     * @param studentCount The number of <Student> objects to be processed by the system (the capacity).
      */
     public ProcessStudents(int studentCount) {
         students = new ArrayList<Student>(studentCount);
     }
     
     /**
+     * Stores a <Student> object in the system.
      * 
-     * @param newStudent
+     * @param newStudent The <Student> to be added to the system.
      */
     public void addStudent(Student newStudent) {
         students.add(newStudent);
     }
     
     /**
-     * 
+     * Displays the student information of all the <Student> objects stored in the system. The information
+     * in printed to STDOUT in a pretty, human-readable format that include headers. The students are printed
+     * in the order they are currently stored in the system (the default is the order they are added to the system).
      */
     public void showStudents() {
         System.out.print("-------------------\nStudent Information\n-------------------\n\n");
@@ -42,16 +49,18 @@ public class ProcessStudents {
     }
     
     /**
-     * 
+     * Sorts the order of <Student> objects in the system by GPA in descending order.
      */
     public void rankStudents() {
         Collections.sort(students, (s1, s2) -> Double.compare(s2.getGpa(), s1.getGpa()));
     }
     
     /**
+     * Searchs for a <Student> by name.
      * 
-     * @param studentName
-     * @return
+     * @param studentName The name of the student to be retrieved.
+     * @return The <Student> with the name studentName if it exists.
+     *         Otherwise returns an empty <Student> (ie new Student("","",0)).
      */
     public Student searchByName(String studentName) {
         for (Student student : students) {
@@ -64,9 +73,11 @@ public class ProcessStudents {
     }
     
     /**
+     * Searchs for a <Student> by student ID.
      * 
-     * @param studentId
-     * @return
+     * @param studentId The ID of the student to be retrieved.
+     * @return The <Student> with the ID studentId if it exists.
+     *         Otherwise returns an empty <Student> (ie new Student("","",0)).
      */
     public Student searchById(String studentId) {
         for (Student student : students) {
@@ -78,8 +89,11 @@ public class ProcessStudents {
     }
     
     /**
+     * Finds the student information of the <Student> with the highest GPA.
      * 
-     * @return
+     * @return The <Student> with the highest gpa value. If multiple students are tied, 
+     *         it returns the first one storwed in the system. If no students are currently 
+     *         stored in the system, returns an empty <Student> (ie new Student("","",0)).
      */
     public Student topStudent() {
         if (students.size() == 0) {
@@ -98,8 +112,11 @@ public class ProcessStudents {
     }
     
     /**
+     * Finds the student information of the <Student> with the lowest GPA.
      * 
-     * @return
+     * @return The <Student> with the lowest gpa value. If multiple students are tied, 
+     *         it returns the last one storwed in the system. If no students are currently 
+     *         stored in the system, returns an empty <Student> (ie new Student("","",0)).
      */
     public Student lastStudent() {
         if (students.size() == 0) {
@@ -118,8 +135,9 @@ public class ProcessStudents {
     }
     
     /**
+     * Removes all <Students> from the system with the specified ID.
      * 
-     * @param studentId
+     * @param studentId The student id of the <Student> to be removed from the system.
      */
     public void removeById(String studentId) {
         students.removeIf(s -> (s.getId().equals(studentId)));
