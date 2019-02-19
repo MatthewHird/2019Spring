@@ -1,5 +1,10 @@
 package ca.viu.csci331.instruction.model;
 
+/**
+ * Represents a student being enrolled in a seminar. Stores a <Student>, a <Seminar>, and a <double> grade.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Enrollment {
     private Student student;
     private Seminar seminar;
@@ -36,7 +41,7 @@ public class Enrollment {
     }
     
     public void show() {
-        System.out.printf("Student ID: %9s\nStudent Name: %s\nSeminar ID: %s\nCourse Name: %s\nCourse Number: %8s\nGrade: %.1f%%\n\n", 
+        System.out.printf("Student ID: %s\nStudent Name: %s\nSeminar ID: %s\nCourse Name: %s\nCourse Number: %s\nGrade: %.1f%%\n\n", 
                 student.getStudentId(), student.getName(), seminar.getSeminarId(), seminar.getCourse().getName(), 
                 seminar.getCourse().getCourseNumber(), grade);
     }

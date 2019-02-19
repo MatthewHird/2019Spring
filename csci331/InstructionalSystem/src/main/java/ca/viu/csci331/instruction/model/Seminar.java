@@ -3,6 +3,12 @@ package ca.viu.csci331.instruction.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  Represents an instance of a course being offered at a university. Manages the class size capacity,
+ *  the course, the instructor, and the lecturelocation and time blocks (<Schedule> objects).
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Seminar {
     private String semniarId;
     private Course course;
@@ -10,6 +16,13 @@ public class Seminar {
     private Instructor instructor;
     private List<Schedule> schedules;
     
+    /**
+     * Primary constructor
+     * @param semniarId  ID for the seminar.
+     * @param course     The course the seminar is an instance of.
+     * @param capacity   The maximum number of students that can enroll in the seminar.
+     * @param instructor The instructor running the seminar.
+     */
     public Seminar(String semniarId, Course course, int capacity, Instructor instructor) {
         this.semniarId = semniarId;
         this.course = course;
@@ -48,11 +61,11 @@ public class Seminar {
     }
     
     public void show() {
-        System.out.printf("Seminar ID: %s\nCourse Name: %s\nCourse Number: %8s\nCapacity: %3d\nInstructor: %s\n"
+        System.out.printf("Seminar ID: %s\nCourse Name: %s\nCourse Number: %s\nCapacity: %d\nInstructor: %s\n"
                 + "Schedule:\n", semniarId, course.getName(), course.getCourseNumber(), capacity, instructor.getName());
         
         for (Schedule schedule : schedules) {
-            System.out.printf("    %9s, %02d:%02d Duration: %3d minutes Location: %s\n", schedule.getDay(),
+            System.out.printf("    Day: %s  Start Time: %02d:%02d  Duration: %d minutes  Location: %s\n", schedule.getDay(),
                     schedule.getHour(), schedule.getMinute(), schedule.getDuration(), schedule.getLocation());
         }
         

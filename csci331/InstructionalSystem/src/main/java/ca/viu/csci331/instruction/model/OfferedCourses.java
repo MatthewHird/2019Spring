@@ -3,6 +3,11 @@ package ca.viu.csci331.instruction.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Business class used to manage a list of <Course> ocjects (courses available to register for) at a university.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class OfferedCourses {
     private List<Course> courses;
     private int capacity;

@@ -1,5 +1,10 @@
 package ca.viu.csci331.instruction.model;
 
+/**
+ * A data class to store university student information.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Student {
     private String name;
     private String studentId;
@@ -36,6 +41,6 @@ public class Student {
     }
 
     public void show() {
-        System.out.printf("Student Name: %s\nStudent ID:   %9s\nEmail Address: %s\n\n", name, studentId, email);
+        System.out.printf("Student Name: %s\nStudent ID: %s\nEmail Address: %s\n\n", name, studentId, email);
     }
 }

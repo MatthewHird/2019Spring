@@ -3,11 +3,20 @@ package ca.viu.csci331.instruction.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Business classes that manages a list of <Seminar> objects in a university system.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Seminars {
     private List<Seminar> seminars;
     private int capacity;
     private int seminarCount;
     
+    /**
+     * Primary constructor
+     * @param capacity Maximum number of <Seminar> objects this instance will store and manage.
+     */
     public Seminars(int capacity) {
         this.capacity = capacity;
         seminarCount = 0;

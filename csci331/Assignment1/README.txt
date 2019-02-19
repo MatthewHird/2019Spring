@@ -1,4 +1,4 @@
-**** Lab1 Program ****
+**** Assignment1 Program ****
 
 1) Overview
 
@@ -17,7 +17,7 @@ After that, the program will:
 
 2) Installation
 
-Copy lab1.jar to preferred directory.
+Copy assignment1.jar to preferred directory.
 
 
 3) Running the Program

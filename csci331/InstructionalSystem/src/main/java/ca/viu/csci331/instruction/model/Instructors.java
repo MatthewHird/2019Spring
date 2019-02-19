@@ -3,11 +3,20 @@ package ca.viu.csci331.instruction.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Business class used to manage a list of <Instructor> objects in a University computer system. 
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Instructors {
     private List<Instructor> instructors;
     private int capacity;
     private int instructorCount;
     
+    /**
+     * Primary constructor
+     * @param capacity Maximim number of <Instructor> objects this instance will store and manage.
+     */
     public Instructors(int capacity) {
         this.capacity = capacity;
         instructorCount = 0;

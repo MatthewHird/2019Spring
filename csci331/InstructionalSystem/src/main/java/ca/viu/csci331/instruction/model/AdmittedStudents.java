@@ -3,11 +3,20 @@ package ca.viu.csci331.instruction.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manages a list of <Schedule> objects who have been admitted in a university system.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class AdmittedStudents {
     private List<Student> students;
     private int capacity;
     private int studentCount;
     
+    /**
+     * Primary constructor
+     * @param capacity Maximim number of <Student> objects this instance will store and manage.
+     */
     public AdmittedStudents(int capacity) {
         this.capacity = capacity;
         studentCount = 0;

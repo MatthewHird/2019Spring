@@ -1,5 +1,10 @@
 package ca.viu.csci331.instruction.model;
 
+/**
+ * A data class to store information on a university course.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Course {
     private String name;
     private String courseNumber;
@@ -46,6 +51,6 @@ public class Course {
     }
 
     public void show() {
-        System.out.printf("Course Name: %s\nCourse Number: %8s\nCredits: %4.2f\nDescription: %s\n\n", name, courseNumber, credit, description);
+        System.out.printf("Course Name: %s\nCourse Number: %s\nCredits: %4.2f\nDescription: %s\n\n", name, courseNumber, credit, description);
     }
 }

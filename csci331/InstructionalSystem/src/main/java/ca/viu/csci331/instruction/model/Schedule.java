@@ -1,5 +1,10 @@
 package ca.viu.csci331.instruction.model;
 
+/**
+ * A data class that represents a weekly time block for a specific room an a particular day of the week.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Schedule {
     private String day;
     private int hour;

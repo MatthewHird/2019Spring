@@ -3,11 +3,20 @@ package ca.viu.csci331.instruction.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manages a list of available <Schedule> objects in a university system.
+ * @author Matthew Hird
+ * @date Feb. 12, 2019
+ */
 public class Schedules {
     private List<Schedule> schedules;
     private int capacity;
     private int scheduleCount;
     
+    /**
+     * Primary constructor
+     * @param capacity Maximim number of <Schedule> objects this instance will store and manage.
+     */
     public Schedules(int capacity) {
         this.capacity = capacity;
         scheduleCount = 0;
