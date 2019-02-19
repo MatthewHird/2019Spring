@@ -112,7 +112,7 @@ SELECT v1.plate AS plate_number,
        COUNT(t1.plate) AS num_of_tickets,
        CAST(COALESCE(AVG(t1.fine), 0) AS NUMBER(8, 2)) AS avg_fine
   FROM Vehicles v1
-       LEFT JOIN Tickets t1
+       LEFT OUTER JOIN Tickets t1
            ON v1.plate = t1.plate
  GROUP BY v1.plate;
 
