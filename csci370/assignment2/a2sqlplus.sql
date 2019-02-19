@@ -108,9 +108,9 @@ SELECT SUM(fine)
  WHERE ticketTime >= TO_TIMESTAMP('2019-01-01', 'yyyy-mm-dd');
 
 -- P2 Q2
-SELECT v1.plate AS "Plate Number",
-       COUNT(t1.plate) AS "# of Tickets",
-       CAST(COALESCE(AVG(t1.fine), 0) AS NUMBER(8, 2)) AS "Avg Fine"
+SELECT v1.plate AS plate_number,
+       COUNT(t1.plate) AS num_of_tickets,
+       CAST(COALESCE(AVG(t1.fine), 0) AS NUMBER(8, 2)) AS avg_fine
   FROM Vehicles v1
        LEFT JOIN Tickets t1
            ON v1.plate = t1.plate
