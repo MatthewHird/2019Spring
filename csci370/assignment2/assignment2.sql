@@ -25,22 +25,29 @@ SELECT DISTINCT c.cid, c.name
 -- P1 Q5
 SELECT p.startTime, p.purchaseTime, c.name
   FROM Permits p
-    INNER JOIN Customers c
-    ON p.owner = c.cid
+       INNER JOIN Customers c
+           ON p.owner = c.cid
  WHERE p.expireTime >= TO_TIMESTAMP('2019-06-30', 'yyyy-mm-dd');
 
 -- P1 Q6
+-- I was working with MySQL at home (which doesn't support MINUS)
 SELECT c.name, c.email
-  FROM Customers c -- MINUS
-           -- SELECT name, email
-           -- FROM Customers
-           -- LEFT JOIN Permits
-           --      ON Customers.cid = Permits.owner;
+  FROM Customers c
        LEFT JOIN Permits p
            ON c.cid = p.owner
  WHERE p.pid IS NULL;
 
+-- Alternate way to do P1 Q6 with Set Difference
+-- SELECT c.name, c.email
+--   FROM Customers c
+--     MINUS
+--    SELECT name, email
+--      FROM Customers
+--           LEFT JOIN Permits
+--               ON Customers.cid = Permits.owner;
+
 -- P1 Q7
+-- I was working with MySQL at home (which doesn't support MINUS)
 SELECT DISTINCT c.name, c.email
   FROM Customers c
        INNER JOIN Permits p
@@ -49,6 +56,7 @@ SELECT DISTINCT c.name, c.email
            ON p.pid = r.pid
  WHERE r.pid IS NULL;
 
+-- Alternate way to do P1 Q7 with Set Difference
 -- SELECT name, email
 -- FROM Customers
 -- INNER JOIN Permits
@@ -112,7 +120,7 @@ SELECT v1.plate AS plate_number,
        COUNT(t1.plate) AS num_of_tickets,
        CAST(COALESCE(AVG(t1.fine), 0) AS NUMBER(8, 2)) AS avg_fine
   FROM Vehicles v1
-       LEFT OUTER JOIN Tickets t1
+       LEFT JOIN Tickets t1
            ON v1.plate = t1.plate
  GROUP BY v1.plate;
 
