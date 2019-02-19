@@ -110,8 +110,7 @@ SELECT SUM(fine)
 -- P2 Q2
 SELECT v1.plate AS "Plate Number",
        COUNT(t1.plate) AS "# of Tickets",
-       CAST(COALESCE(AVG(t1.fine), 0) AS DECIMAL(8, 2)) AS "Avg Fine"
-    -- SELECT v1.plate as 'Plate Number', count(t1.plate) as '# of Tickets', cast(coalesce(avg(t1.fine), 0) AS NUMBER(8,2)) as 'Avg Fine'
+       CAST(COALESCE(AVG(t1.fine), 0) AS NUMBER(8, 2)) AS "Avg Fine"
   FROM Vehicles v1
        LEFT JOIN Tickets t1
            ON v1.plate = t1.plate
