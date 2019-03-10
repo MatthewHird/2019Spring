@@ -11,7 +11,7 @@ import ca.viu.csci331.instruction.model.Schedules;
 import ca.viu.csci331.instruction.model.Seminar;
 import ca.viu.csci331.instruction.model.Seminars;
 import ca.viu.csci331.instruction.model.Student;
-import ca.viu.csci331.instruction.services.admission.AdmissionService;
+import ca.viu.csci331.instruction.services.admission.AdmissionView;
 
 /**
  * Simple runner class to demo the functionality of all of the classes' constructors and show functions.
@@ -57,7 +57,7 @@ public class testMain {
 //        a10.showAll();
 //        a11.showAll();
 //        a12.showAll();
-        AdmissionService admissionService = new AdmissionService();
+        AdmissionView admissionService = new AdmissionView();
         admissionService.runService();
     }
 
