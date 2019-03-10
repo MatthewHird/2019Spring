@@ -8,3 +8,7 @@ csci331/*/\.classpath
 csci331/*/\.settings/
 
 csci331/*/bin/
+
+csci331/.recommenders/
+
+csci331/*/doc/
