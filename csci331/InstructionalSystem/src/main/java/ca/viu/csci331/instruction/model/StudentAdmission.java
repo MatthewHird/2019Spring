@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import ca.viu.csci331.instruction.exception.InvalidAdmissionStatusRuntimeException;
 
-public class StudentAdmission {
+public class StudentAdmission implements Comparable<Object> {
     private Student student;
     private String admissionStatus;
     private LocalDate admissionDate;
@@ -63,8 +63,7 @@ public class StudentAdmission {
         this.admissionDate = admissionDate;
     }
     
-    @Override
-    public boolean equals(Object other) {
+    public boolean studentIdEquals(Object other) {
         if (other instanceof StudentAdmission) {
             return this.getStudent().getStudentId().equals(((StudentAdmission) other).getStudent().getStudentId());
         } else if (other instanceof Student) {
@@ -78,5 +77,11 @@ public class StudentAdmission {
     @Override
     public String toString() {
         return student.toString() + getAdmissionStatus() + "\n" + getAdmissionDate() + "\n";
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        StudentAdmission s = (StudentAdmission) o;
+        return this.getStudent().getStudentId().compareTo(s.getStudent().getStudentId());
     }
 }

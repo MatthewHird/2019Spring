@@ -11,11 +11,13 @@ import ca.viu.csci331.instruction.model.StudentAdmission;
 
 public class StudentAdmissionList {
     private List<StudentAdmission> studentAdmissions;
-//    private int capacity;
-//    private int studentCount;
     
     public StudentAdmissionList() {
         studentAdmissions = new ArrayList<StudentAdmission>();
+    }
+    
+    public int getStudentCount() {
+        return studentAdmissions.size();
     }
     
     public void add(StudentAdmission addedStudentAdmission) throws DuplicateStudentAdmissionException {
@@ -26,19 +28,31 @@ public class StudentAdmissionList {
             }
     }
     
+    public void add(String studentName, String studentId, String studentEmail, 
+            String admissionStatus, LocalDate admissionDate) throws DuplicateStudentAdmissionException {
+        
+        this.add(new StudentAdmission(
+                new Student(studentName, studentId, studentEmail), admissionStatus, admissionDate ));
+    }
+    
     public StudentAdmission remove(StudentAdmission removedStudentAdmission) throws StudentIdNotFoundException {
-        int removeIndex = studentAdmissions.indexOf(removedStudentAdmission);
+        int removeIndex = -1;
+        for (int i = 0; i < studentAdmissions.size(); i++) {
+            if (studentAdmissions.get(i).studentIdEquals(removedStudentAdmission)) {
+                removeIndex = i;
+                break;
+            }
+        }
         if (removeIndex == -1) {
             throw new StudentIdNotFoundException(removedStudentAdmission.getStudent().getStudentId());
         }
         return studentAdmissions.remove(removeIndex);
     }
     
-    @SuppressWarnings("unlikely-arg-type")
     public StudentAdmission remove(Student removedStudent) throws StudentIdNotFoundException {
         int removeIndex = -1;
         for (int i = 0; i < studentAdmissions.size(); i++) {
-            if (studentAdmissions.get(i).equals(removedStudent)) {
+            if (studentAdmissions.get(i).studentIdEquals(removedStudent)) {
                 removeIndex = i;
                 break;
             }
@@ -49,11 +63,10 @@ public class StudentAdmissionList {
         return studentAdmissions.remove(removeIndex);
     }
     
-    @SuppressWarnings("unlikely-arg-type")
     public StudentAdmission remove(String removedStudentId) throws StudentIdNotFoundException {
         int removeIndex = -1;
         for (int i = 0; i < studentAdmissions.size(); i++) {
-            if (studentAdmissions.get(i).equals(removedStudentId)) {
+            if (studentAdmissions.get(i).studentIdEquals(removedStudentId)) {
                 removeIndex = i;
                 break;
             }
@@ -62,6 +75,14 @@ public class StudentAdmissionList {
             throw new StudentIdNotFoundException(removedStudentId);
         }
         return studentAdmissions.remove(removeIndex);
+    }
+    
+    public ArrayList<StudentAdmission> getAllStudentAdmissions() {
+        ArrayList<StudentAdmission> allAdmissionsWithName = new ArrayList<StudentAdmission>();
+        for (StudentAdmission studentAdmission : studentAdmissions) {
+            allAdmissionsWithName.add(studentAdmission);
+        }
+        return allAdmissionsWithName;
     }
     
     public ArrayList<StudentAdmission> searchByStudentName(String studentName) {
@@ -74,10 +95,9 @@ public class StudentAdmissionList {
         return studentAdmissionsWithName;
     }
     
-    @SuppressWarnings("unlikely-arg-type")
     public StudentAdmission searchByStudentId(String studentId) throws StudentIdNotFoundException {
         for (StudentAdmission studentAdmission : studentAdmissions) {
-            if (studentAdmission.equals(studentId)) {
+            if (studentAdmission.studentIdEquals(studentId)) {
                 return studentAdmission;
             }
         }
@@ -116,11 +136,13 @@ public class StudentAdmissionList {
         return studentAdmissionsWithDateRange;
     }
     
-    public ArrayList<StudentAdmission> searchByAdmissionDateMonth(int admissionMonth) {
+    public ArrayList<StudentAdmission> searchByAdmissionDateMonth(int admissionMonth, int admissionYear) {
         ArrayList<StudentAdmission> studentAdmissionsWithDateMonth = new ArrayList<StudentAdmission>();
         for (StudentAdmission studentAdmission : studentAdmissions) {
             if (studentAdmission.getAdmissionDate().getMonthValue() == admissionMonth) {
-                studentAdmissionsWithDateMonth.add(studentAdmission);
+                if (studentAdmission.getAdmissionDate().getYear() == admissionYear) {
+                    studentAdmissionsWithDateMonth.add(studentAdmission);
+                }
             }
         }
         return studentAdmissionsWithDateMonth;
@@ -144,12 +166,10 @@ public class StudentAdmissionList {
         return asString;
     }
     
-
     
-    @SuppressWarnings("unlikely-arg-type")
     public boolean containsStudentId(String testStudentId) {
         for (StudentAdmission studentAdmission : studentAdmissions) {
-            if (studentAdmission.equals(testStudentId)) {
+            if (studentAdmission.studentIdEquals(testStudentId)) {
                 return true;
             }
         }
