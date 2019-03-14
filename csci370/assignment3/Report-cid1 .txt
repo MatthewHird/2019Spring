@@ -1,0 +1,12 @@
+PURCHASE/REGISTRATION HISTORY REPORT
+
+CUSTOMER ID: cid1 
+CUSTOMER NAME: name1
+
+MOST RECENT PERMIT
+PID             START TIME      EXPIRE TIME     PURCHASE TIME
+----------      ----------      -----------     -------------
+pid1            2016-12-01      2016-12-01      2016-12-01
+
+REGISTERED VEHICLE(S)
+Car1  
