@@ -1,5 +1,6 @@
 package ca.viu.csci331.lab5;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.io.Writer;
 
 public class TextFileProcessor {
     private String inputFileName;
@@ -117,7 +120,9 @@ public class TextFileProcessor {
     
     
     public void write(String textString) throws IOException {
-        outputStream.write(textString.getBytes());
+        Writer outWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+        outWriter.write(textString);
+        outWriter.close();
     }
     
     
