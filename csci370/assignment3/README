@@ -1,0 +1,69 @@
+README
+CSCI 370 Assignment 3
+
+1. Overview
+
+   This source code can build two executable programs, 'reporting' and 
+'ticketing', as specified by the CSCI 370 Assignment 3 document 
+(http://csci.viu.ca/~liuh/370/assignments/A3.html). These programs simulate
+software sevices to be used by the fictional parking company "WestPark". 
+
+    The reporting program is used to generate a the most recent vehicle/permit 
+registration report for a customer, based on the customer's customer ID. The
+report will be saved in a text called "Report-[CustomerId].txt" (only if the
+customer ID is in the system and the customer has owned at least 1 permit).
+
+    The ticketing service is used to check whether specfic vehicles have valid
+parking permits. Upon starting, the user will be repeatedly prompted to enter
+vehicle license plate numbers. Upon entering a plate number, the system will
+inform the user whether the vehicle has a valid permit or not, and if it does 
+not, a parking ticket will automatically be generated and stored in a database.
+The prgram will be exited when the user enters an exit code.
+
+
+2. Compiling
+
+    Compiling requires g++-4.9 and the occi.h library. From the source code 
+directory, the following command can be used: 
+
+Compile both programs
+    $ make
+
+Compile the reporting program
+    $ reporting
+
+Compile the ticketing program
+    $ ticketing
+
+Remove all .o files
+    $ clean
+
+Remove all .o files, and the reporting and ticketing executable files 
+    $ cleanAll
+
+
+3. Program Inputs and Operation
+
+    To start the reporting program, the following command must be used, where 
+[cid] is the 5 character customer ID:
+    $ ./reporting [cid] 
+
+The user will be prompted to enter their username and password to connect with 
+the database. Upon generating the report, the program will automatically 
+terminate.
+
+    To start the ticketing program, the following command must be used, where
+[WestParkId] is the name or ID of the user, and [currentDate] is the current
+date in the format "yyyy-mm-dd":
+    $ ./ticketing [WestParkId] [currentDate]
+
+The user will be prompted to enter their username and password to connect with 
+the database. The user will be prompted to enter license plate numbers, which 
+should be 6 characters long. After verifying whether the vehicle is registered 
+to a valid parking permit or not, the user will be prompted to enter another 
+plate number. If the user enters the number 000000, the program will terminate.
+
+
+4. Known Bugs
+
+    There are no known bugs in either the 'reporting' or 'ticketing' programs.
