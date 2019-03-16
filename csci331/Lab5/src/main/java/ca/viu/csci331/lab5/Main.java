@@ -8,7 +8,13 @@ public class Main {
         TextFileProcessor textFileProcessor = new TextFileProcessor("./src/main/resources/original.txt", "./src/main/resources/processed.txt");
         
         textFileProcessor.openInputStream();
-        String unprocessedText = textFileProcessor.read();
+        String unprocessedText = "";
+        try {
+            unprocessedText = textFileProcessor.read();
+        } catch (IOException e1) {
+            System.out.print("Error: Input stream has not been opened yet\n");
+            e1.printStackTrace();
+        }
         textFileProcessor.closeInputStream();
         String processedText = textFileProcessor.process(unprocessedText);
         
@@ -16,7 +22,7 @@ public class Main {
         try {
             textFileProcessor.write(processedText);
         } catch (IOException e) {
-            System.out.print("Error: Output stream is not opened yet\n");
+            System.out.print("Error: Output stream has not been opened yet\n");
         }
         textFileProcessor.closeOutputStream();
     }

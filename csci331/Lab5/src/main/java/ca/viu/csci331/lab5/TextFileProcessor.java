@@ -101,7 +101,7 @@ public class TextFileProcessor {
     }
     
     
-    public String read() {
+    public String read() throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         
         try {
@@ -111,8 +111,8 @@ public class TextFileProcessor {
                 stringBuilder.append((char)ch);
                 ch = reader.read();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (NullPointerException e) {
+            throw new IOException();
         }
 
         return stringBuilder.toString();
@@ -120,9 +120,13 @@ public class TextFileProcessor {
     
     
     public void write(String textString) throws IOException {
-        Writer outWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-        outWriter.write(textString);
-        outWriter.close();
+        try {
+            Writer outWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            outWriter.write(textString);
+            outWriter.flush();
+        } catch (NullPointerException e) {
+            throw new IOException();
+        }
     }
     
     
