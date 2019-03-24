@@ -76,7 +76,8 @@ public class StudentAdmission implements Comparable<Object> {
     
     @Override
     public String toString() {
-        return student.toString() + getAdmissionStatus() + "\n" + getAdmissionDate() + "\n";
+        return String.format("%s%s\n%s\n", 
+                student.toString(), getAdmissionStatus(), getAdmissionDate().toString());
     }
     
     @Override

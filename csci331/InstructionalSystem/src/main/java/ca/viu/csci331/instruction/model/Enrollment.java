@@ -41,16 +41,24 @@ public class Enrollment {
     }
     
     public void show() {
-        System.out.printf("Student ID: %s\nStudent Name: %s\nSeminar ID: %s\nCourse Name: %s\nCourse Number: %s\nGrade: %.1f%%\n\n", 
-                student.getStudentId(), student.getName(), seminar.getSeminarId(), seminar.getCourse().getName(), 
-                seminar.getCourse().getCourseNumber(), grade);
+        System.out.printf("Student ID: %s\nStudent Name: %s\nSeminar ID: %s\n"
+                + "Course Name: %s\nCourse Number: %s\nGrade: %.1f%%\n\n", 
+                getStudent().getStudentId(), getStudent().getName(), 
+                getSeminar().getSeminarId(), getSeminar().getCourse().getName(), 
+                getSeminar().getCourse().getCourseNumber(), getGrade());
     }
     
-    public boolean equals(Enrollment other) {
-        if (this.getStudent().getStudentId().equals(other.getStudent().getStudentId())
-                && this.getSeminar().getSeminarId().equals(other.getSeminar().getSeminarId())) {
-            return true;
-        }
-        return false;
+    @Override
+    public String toString() {
+        return String.format("%s%s%f\n", getStudent().toString(), 
+                getSeminar().toString(), getGrade());
     }
+    
+//    public boolean equals(Enrollment other) {
+//        if (this.getStudent().getStudentId().equals(other.getStudent().getStudentId())
+//                && this.getSeminar().getSeminarId().equals(other.getSeminar().getSeminarId())) {
+//            return true;
+//        }
+//        return false;
+//    }
 }

@@ -41,11 +41,12 @@ public class Student {
     }
 
     public void show() {
-        System.out.printf("Student Name: %s\nStudent ID: %s\nEmail Address: %s\n\n", name, studentId, email);
+        System.out.printf("Student Name: %s\nStudent ID: %s\nEmail Address: %s\n\n", 
+                getName(), getStudentId(), getEmail());
     }
     
     @Override
     public String toString() {
-        return getName() + "\n" + getStudentId() + "\n" + getEmail() + "\n";
+        return String.format("%s\n%s\n%s\n", getName(), getStudentId(), getEmail());
     }
 }

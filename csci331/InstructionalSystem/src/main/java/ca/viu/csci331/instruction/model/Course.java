@@ -5,7 +5,7 @@ package ca.viu.csci331.instruction.model;
  * @author Matthew Hird
  * @date Feb. 12, 2019
  */
-public class Course {
+public class Course implements Comparable<Object> {
     private String name;
     private String courseNumber;
     private double credit;
@@ -51,6 +51,29 @@ public class Course {
     }
 
     public void show() {
-        System.out.printf("Course Name: %s\nCourse Number: %s\nCredits: %4.2f\nDescription: %s\n\n", name, courseNumber, credit, description);
+        System.out.printf("Course Name: %s\nCourse Number: %s\nCredits: %4.2f\nDescription: %s\n\n", 
+                getName(), getCourseNumber(), getCredit(), getDescription());
+    }
+    
+    public boolean memberValuesEqual(Course other) {
+        if (this.getName().equals(other.getName())
+                && this.getCourseNumber().equals(other.getCourseNumber())
+                && this.getCredit() == other.getCredit()
+                && this.getDescription().equals(other.getDescription())) {
+            return true;
+        }
+        return false;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("%s\n%s\n%f\n%s\n", 
+                getName(), getCourseNumber(), getCredit(), getDescription());
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        Course s = (Course) o;
+        return this.getCourseNumber().compareTo(s.getCourseNumber());
     }
 }

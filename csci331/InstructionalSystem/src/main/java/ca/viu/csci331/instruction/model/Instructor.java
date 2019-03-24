@@ -3,7 +3,7 @@ package ca.viu.csci331.instruction.model;
 /**
  * A data class to store information on a university instructor.
  * @author Matthew Hird
- * @date Feb. 12, 2019
+ * @date Mar. 21, 2019
  */
 public class Instructor {
     private String name;
@@ -41,6 +41,21 @@ public class Instructor {
     }
     
     public void show() {
-        System.out.printf("Instructor Name: %s\nInstructor ID: %s\nEmail Address: %s\n\n", name, instructorId, email);
+        System.out.printf("Instructor Name: %s\nInstructor ID: %s\nEmail Address: %s\n\n", 
+                getName(), getInstructorId(), getEmail());
+    }
+    
+    public boolean memberValuesEqual(Instructor other) {
+        if (this.getName().equals(other.getName())
+                && this.getInstructorId().equals(other.getInstructorId())
+                && this.getEmail().equals(other.getEmail())) {
+            return true;
+        }
+        return false;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("%s\n%s\n%s\n", getName(), getInstructorId(), getEmail());
     }
 }

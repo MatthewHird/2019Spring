@@ -21,11 +21,10 @@ public class StudentAdmissionList {
     }
     
     public void add(StudentAdmission addedStudentAdmission) throws DuplicateStudentAdmissionException {
-            if (!containsStudentId(addedStudentAdmission.getStudent().getStudentId())) {
-                studentAdmissions.add(addedStudentAdmission);
-            } else {
+            if (containsStudentId(addedStudentAdmission.getStudent().getStudentId())) {
                 throw new DuplicateStudentAdmissionException(addedStudentAdmission);
-            }
+            } 
+            studentAdmissions.add(addedStudentAdmission);
     }
     
     public void add(String studentName, String studentId, String studentEmail, 

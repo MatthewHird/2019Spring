@@ -1,23 +1,65 @@
 package ca.viu.csci331.instruction.model;
 
+import java.time.LocalTime;
+import java.util.regex.Pattern;
+
+import ca.viu.csci331.instruction.exception.InvalidDayOfWeekRuntimeException;
+import ca.viu.csci331.instruction.exception.InvalidDurationRuntimeException;
+
 /**
  * A data class that represents a weekly time block for a specific room an a particular day of the week.
  * @author Matthew Hird
- * @date Feb. 12, 2019
+ * @date Mar 23, 2019
  */
-public class Schedule {
+public class Schedule implements Comparable<Object> {
+    private String scheduleId;
     private String day;
-    private int hour;
-    private int minute;
+    private LocalTime startTime;
     private int duration;
-    private String location;
+    private BuildingRoom location;
     
-    public Schedule(String day, int hour, int minute, int duration, String location) {
-        this.day = day;
-        this.hour = hour;
-        this.minute = minute;
+    static class DayOfWeek {
+        static public String of(String inputDay) {
+            String d = inputDay.toLowerCase();
+            String dayOfWeek = "";
+            if (Pattern.matches("^sun(day)?$", d)) {
+                dayOfWeek = "Sunday";
+            } else if (Pattern.matches("^mon(day)?$", d)) {
+                dayOfWeek = "Monday";
+            } else if (Pattern.matches("^tue(s)?(day)?$", d)) {
+                dayOfWeek = "Tuesday";
+            } else if (Pattern.matches("^wed(nesday)?$", d)) {
+                dayOfWeek = "Wednesday";
+            } else if (Pattern.matches("^thu(r(s)?)?(day)?$", d)) {
+                dayOfWeek = "Thursday";
+            } else if (Pattern.matches("^fri(day)?$", d)) {
+                dayOfWeek = "Friday";
+            } else if (Pattern.matches("^sat(urday)?$", d)) {
+                dayOfWeek = "Saturday";
+            } else {
+                throw new InvalidDayOfWeekRuntimeException(inputDay);
+            }
+            return dayOfWeek;
+        }
+    }
+    
+    public Schedule(String scheduleId, String dayOfWeek, LocalTime startTime, int duration, BuildingRoom location) {
+        if (duration <= 0) {
+            throw new InvalidDurationRuntimeException(duration);
+        }
+        this.scheduleId = scheduleId;
+        this.day = DayOfWeek.of(day);
+        this.startTime = startTime;
         this.duration = duration;
         this.location = location;
+    }
+    
+    public String getScheduleId() {
+        return scheduleId;
+    }
+    
+    public void setScheduleId(String scheduleId) {
+        this.scheduleId = scheduleId;
     }
 
     public String getDay() {
@@ -25,23 +67,15 @@ public class Schedule {
     }
 
     public void setDay(String day) {
-        this.day = day;
+        this.day = DayOfWeek.of(day);
     }
 
-    public int getHour() {
-        return hour;
+    public LocalTime getStartTime() {
+        return startTime;
     }
 
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
-
-    public int getMinute() {
-        return minute;
-    }
-
-    public void setMinute(int minute) {
-        this.minute = minute;
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
     }
 
     public int getDuration() {
@@ -49,42 +83,81 @@ public class Schedule {
     }
 
     public void setDuration(int duration) {
+        if (duration <= 0) {
+            throw new InvalidDurationRuntimeException(duration);
+        }
         this.duration = duration;
     }
 
-    public String getLocation() {
+    public BuildingRoom getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(BuildingRoom location) {
         this.location = location;
     }
     
     public void show() {
-        System.out.printf("Day of the Week: %s \nStart Time: %02d:%02d\nDuration: %d minutes\nLocation: %s\n\n",
-                day, hour, minute, duration, location);
+        System.out.printf("Day of the Week: %s \nStart Time: %s\nDuration: %d minutes\n"
+                + "Location:\n        Building: %s\n        Room: %s\n        Capacity: %d\n\n",
+                getDay(), getStartTime().toString(), getDuration(), getLocation().getBuildingNumber(),
+                getLocation().getRoomNumber(), getLocation().getCapacity());
     }
     
-    public boolean equals(Schedule other) {
-        if (this.getLocation().equals(other.getLocation()) && this.getDay().equals(other.getDay()) && this.getHour() == other.getHour() 
-                && this.getMinute() == other.getMinute() && this.getDuration() == other.getDuration()) {
+    
+    public boolean doesOverlap(Schedule other) {
+        if (this.getLocation().getBuildingNumber().equals(other.getLocation().getBuildingNumber()) 
+                && this.getLocation().getRoomNumber().equals(other.getLocation().getRoomNumber())
+                && this.getDay().equals(other.getDay())) {
+            LocalTime thisStart = this.getStartTime();
+            LocalTime otherStart = other.getStartTime();
+            
+            if (!thisStart.isAfter(otherStart) 
+                    && thisStart.plusMinutes(this.getDuration()).isAfter(otherStart)) {
+                return true;
+            }
+            if (!otherStart.isAfter(thisStart) 
+                    && otherStart.plusMinutes(other.getDuration()).isAfter(thisStart)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean dayEquals(String dayOfWeek) {
+        if (this.getDay().equals(DayOfWeek.of(dayOfWeek))) {
             return true;
         }
         return false;
     }
     
-    public boolean doesOverlap(Schedule other) {
-        if (this.getLocation().equals(other.getLocation()) && this.getDay().equals(other.getDay())) {
-            int thisStart = this.getHour() * 60 + this.getMinute();
-            int otherStart = other.getHour() * 60 + other.getMinute();
-            
-            if (thisStart <= otherStart && thisStart + this.getDuration() > otherStart) {
-                return true;
-            }
-            if (otherStart <= thisStart && otherStart + other.getDuration() > thisStart) {
-                return true;
+    public boolean scheduleIdEquals(Schedule other) {
+        return this.getScheduleId().equals(other.getScheduleId());
+    }
+    
+    public boolean scheduleIdEquals(String otherScheduleId) {
+        return this.getScheduleId().equals(otherScheduleId);
+    }
+    
+    @Override
+    public String toString() {
+        return String.format( "%s\n%s\n%d\n%s", getDay(), getStartTime().toString(), 
+                getDuration(), getLocation().toString());
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        Schedule s = (Schedule) o;
+        int result = this.getDay().compareToIgnoreCase(s.getDay());
+        if (result == 0) {
+            result = this.getStartTime().compareTo(s.getStartTime());
+            if (result == 0) {
+                result = this.getDuration() - s.getDuration();
+                if (result == 0) {
+                    result = this.getLocation().compareTo(s.getLocation());
+                }
             }
         }
-        return false;
+        return result;
     }
 }
