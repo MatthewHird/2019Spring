@@ -48,7 +48,7 @@ public class Schedule implements Comparable<Object> {
             throw new InvalidDurationRuntimeException(duration);
         }
         this.scheduleId = scheduleId;
-        this.day = DayOfWeek.of(day);
+        this.day = DayOfWeek.of(dayOfWeek);
         this.startTime = startTime;
         this.duration = duration;
         this.location = location;

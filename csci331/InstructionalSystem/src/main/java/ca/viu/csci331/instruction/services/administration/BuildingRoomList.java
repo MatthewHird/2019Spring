@@ -71,6 +71,14 @@ public class BuildingRoomList {
         return roomsWithCap;
     }
     
+    public ArrayList<BuildingRoom> getAllBuildingRooms() {
+        ArrayList<BuildingRoom> roomsWithCap = new ArrayList<BuildingRoom>();
+        for (int i = 0; i < roomList.size(); i++) {
+            roomsWithCap.add(roomList.get(i));
+        }
+        return roomsWithCap;
+    }
+    
     public boolean containsBuildingRoomNumber(String buildingNumber, String roomNumber) {
         for (BuildingRoom buildingRoom : roomList) {
             if (buildingRoom.getBuildingNumber().equals(buildingNumber)

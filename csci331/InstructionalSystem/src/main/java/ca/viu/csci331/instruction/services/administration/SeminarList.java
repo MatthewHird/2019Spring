@@ -51,6 +51,14 @@ public class SeminarList {
         throw new SeminarIdNotFoundException(seminarId);
     }
     
+    public ArrayList<Seminar> getAllSeminars() {
+        ArrayList<Seminar> allSeminar = new ArrayList<Seminar>();
+        for (Seminar seminar : seminarList) {
+            allSeminar.add(seminar);
+        }
+        return allSeminar;
+    }
+    
     public boolean containsSeminarId(String testSeminarId) {
         for (Seminar seminar : seminarList) {
             if (seminar.seminarIdEquals(testSeminarId)) {

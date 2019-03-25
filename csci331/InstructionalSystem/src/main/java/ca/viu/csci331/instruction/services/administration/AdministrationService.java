@@ -131,6 +131,14 @@ public class AdministrationService {
         Collections.sort(instructorEmployments, InstructorEmployment.getDateComparator());
         return instructorEmployments;
     }
+    
+    public ArrayList<InstructorEmployment> getAllInstructorEmployments() {
+        return employmentList.getAllInstructorEmployments();
+    }
+    
+    public ArrayList<InstructorEmployment> getAllEmployedInstructorEmployments() {
+        return employmentList.getAllEmployedInstructorEmployments();
+    }
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~END OF INSTRUCTOR SECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~START OF COURSE SECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -222,6 +230,10 @@ public class AdministrationService {
     public ArrayList<BuildingRoom> searchRoomsByMinCapacity(int minCapacity) {
         return roomList.searchByMinCapacity(minCapacity);
     }
+    
+    public ArrayList<BuildingRoom> getAllRooms() {
+        return roomList.getAllBuildingRooms();
+    }
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~END OF BUILDING/ROOM SECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~START OF SCHEDULES SECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -266,13 +278,20 @@ public class AdministrationService {
     
     public void updateScheduleDuration(String scheduleId, int duration) 
             throws ScheduleIdNotFoundException, DuplicateScheduleException {
-        Schedule scheduleToUpdate = availableScheduleList.searchByScheduleId(scheduleId);
+        Schedule scheduleToUpdate = availableScheduleList.remove(scheduleId);
+
+        int temp = scheduleToUpdate.getDuration();
+        
+        scheduleToUpdate.setDuration(duration);
+        
         if (availableScheduleList.containsOverlap(new Schedule("", scheduleToUpdate.getDay(),
-                scheduleToUpdate.getStartTime(), duration,
-                scheduleToUpdate.getLocation()))) {
+                scheduleToUpdate.getStartTime(), duration, scheduleToUpdate.getLocation()))) {
+            scheduleToUpdate.setDuration(temp);
+            availableScheduleList.add(scheduleToUpdate);
+            scheduleToUpdate.setDuration(temp);
             throw new DuplicateScheduleException();
         }
-        scheduleToUpdate.setDuration(duration);
+        availableScheduleList.add(scheduleToUpdate);
     }
     
     public void updateScheduleLocation(String scheduleId, BuildingRoom location) 
@@ -303,7 +322,10 @@ public class AdministrationService {
         return availableScheduleList.searchByTimeBlockAndCapacity(
                 dayOfWeek, startTime, durationMinutes, minRoomCapacity);
     }
-
+    
+    public ArrayList<Schedule> getAllAvailableSchedules() {
+        return availableScheduleList.getAllSchedules();
+    }
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~END OF SCHEDULES SECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~START OF SEMINARS SECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -372,6 +394,10 @@ public class AdministrationService {
     
     public ArrayList<Schedule> getSeminarScheduleListBySeminarId(String seminarId) throws SeminarIdNotFoundException {
         return seminarList.searchBySeminarId(seminarId).getSeminarScheduleList();
+    }
+    
+    public ArrayList<Seminar> getAllSeminars() {
+        return seminarList.getAllSeminars();
     }
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~END OF SEMINARS SECTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }

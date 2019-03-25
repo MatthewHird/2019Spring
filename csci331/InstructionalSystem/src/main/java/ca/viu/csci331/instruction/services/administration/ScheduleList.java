@@ -7,7 +7,6 @@ import java.util.List;
 import ca.viu.csci331.instruction.exception.DuplicateScheduleException;
 import ca.viu.csci331.instruction.exception.ScheduleIdNotFoundException;
 import ca.viu.csci331.instruction.exception.ScheduleNotFoundException;
-import ca.viu.csci331.instruction.model.BuildingRoom;
 import ca.viu.csci331.instruction.model.Schedule;
 
 public class ScheduleList {
@@ -109,6 +108,14 @@ public class ScheduleList {
             }
         }
         return schedulesWithinTimeblock;
+    }
+    
+    public ArrayList<Schedule> getAllSchedules() {
+        ArrayList<Schedule> allSchedules = new ArrayList<Schedule>();
+        for (Schedule schedule : scheduleList) {
+            allSchedules.add(schedule);
+        }
+        return allSchedules;
     }
     
     public boolean containsScheduleId(String scheduleId) {
