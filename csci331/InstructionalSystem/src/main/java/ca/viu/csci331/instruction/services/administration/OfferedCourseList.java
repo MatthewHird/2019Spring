@@ -10,9 +10,10 @@ import ca.viu.csci331.instruction.exception.DuplicateCourseNumberException;
 import ca.viu.csci331.instruction.model.Course;
 
 /**
- * Business class used to manage a list of <Course> ocjects (courses available to register for) at a university.
+ * Contains and manages Course objects in a list.
+ * 
  * @author Matthew Hird
- * @date Mar. 21, 2019
+ * @date Mar. 25, 2019
  */
 public class OfferedCourseList {
     private List<Course> courseList;
@@ -21,12 +22,23 @@ public class OfferedCourseList {
         courseList = new ArrayList<Course>();
     }
     
-    
+    /**
+     * @return  Number of Course objects currently in OfferedCourseList.
+     */
     public int getCourseCount() {
         return courseList.size();
     }
     
-    
+    /**
+     * @param courseName        Name of added Course.
+     * @param courseNumber      ID of the added Course.
+     * @param courseCredit      Credit value of the added Course.
+     * @param courseDescription A description of the added course.
+     * @throws DuplicateCourseNameException     If Course with name courseName
+     *                                          is already in OfferedCourseList.
+     * @throws DuplicateCourseNumberException   If course with IS courseNumber
+     *                                          is already in OfferedCourseList.
+     */
     public void add(String courseName, String courseNumber, double courseCredit, String courseDescription) 
             throws DuplicateCourseNameException, DuplicateCourseNumberException {
         if (containsCourseName(courseName)) {
@@ -37,8 +49,13 @@ public class OfferedCourseList {
         
         courseList.add(new Course(courseName, courseNumber, courseCredit, courseDescription));
     };
-
     
+    /**
+     * @param cancelledCourseNumber     ID of the Course to be cancelled.
+     * @return  Course that was cancelled.
+     * @throws CourseNumberNotFoundException    If course with ID 
+     *              cancelledCourseNumber is not in OfferedCourseList.
+     */
     public Course remove(String cancelledCourseNumber) throws CourseNumberNotFoundException {
         int removeIndex = -1;
         for (int i = 0; i < courseList.size(); i++) {
@@ -53,6 +70,14 @@ public class OfferedCourseList {
         return courseList.remove(removeIndex);
     }
     
+    /**
+     * Find Course based on specified name.
+     * 
+     * @param courseName    Name of Course.
+     * @return  Course with name courseName.
+     * @throws CourseNameNotFoundException  If Course with name courseName is
+     *                                      not in OfferedCourseList.
+     */
     public Course searchByName(String courseName) throws CourseNameNotFoundException {
         for (Course course : courseList) {
             if (course.getName().equals(courseName)) {
@@ -62,6 +87,14 @@ public class OfferedCourseList {
         throw new CourseNameNotFoundException(courseName);
     }
     
+    /**
+     * Find Course based on course ID.
+     * 
+     * @param courseNumber  ID of Course.
+     * @return  Course with ID courseNumber.
+     * @throws CourseNumberNotFoundException    If Course with ID courseNumber
+     *                                          is not in OfferedCourseList.
+     */
     public Course searchByNumber(String courseNumber) throws CourseNumberNotFoundException {
         for (Course course : courseList) {
             if (course.getCourseNumber().equals(courseNumber)) {
@@ -71,6 +104,9 @@ public class OfferedCourseList {
         throw new CourseNumberNotFoundException(courseNumber);
     }
     
+    /**
+     * @return  List of all Courses in OfferedCourseList.
+     */
     public ArrayList<Course> getAllOfferedCourses() {
         ArrayList<Course> allOfferedCourses = new ArrayList<Course>();
         for (Course course : courseList) {
@@ -79,6 +115,13 @@ public class OfferedCourseList {
         return allOfferedCourses;
     }
     
+    /**
+     * Checks for exiestence of a Course with specified name.
+     * 
+     * @param courseName    Name of Course.
+     * @return  true if a Course with name courseName is in OfferedCoureList.
+     *          Otherwise, false.
+     */
     public boolean containsCourseName(String courseName) {
         for (Course course : courseList) {
             if (course.getName().equals(courseName)) {
@@ -88,6 +131,13 @@ public class OfferedCourseList {
         return false;
     }
     
+    /**
+     * Checks for existence of a Course with specified ID.
+     * 
+     * @param courseNumber    Name of Course.
+     * @return  true if a Course with ID courseNumber is in OfferedCoureList.
+     *          Otherwise, false.
+     */
     public boolean containsCourseNumber(String courseNumber) {
         for (Course course : courseList) {
             if (course.getCourseNumber().equals(courseNumber)) {

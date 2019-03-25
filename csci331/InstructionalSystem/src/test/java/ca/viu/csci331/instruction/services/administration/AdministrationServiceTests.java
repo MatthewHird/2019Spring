@@ -11,8 +11,6 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.org.apache.xalan.internal.lib.ExsltStrings;
-
 import ca.viu.csci331.instruction.exception.BuildingRoomNotFoundException;
 import ca.viu.csci331.instruction.exception.CourseNameNotFoundException;
 import ca.viu.csci331.instruction.exception.CourseNumberNotFoundException;
@@ -203,7 +201,7 @@ public class AdministrationServiceTests {
     }
 
     @Test
-    public void testGetAllInstructorEmploymentsByEmploymentDate() throws InstructorIdNotFoundException {
+    public void testGetAllInstructorEmploymentsOrderedByEmploymentDate() throws InstructorIdNotFoundException {
         ArrayList<InstructorEmployment> expected = new ArrayList<InstructorEmployment>();
         
         expected.add(new InstructorEmployment(new Instructor("Instructor 1", instructorIdList.get(0), "e1@mail.com")));
@@ -213,7 +211,7 @@ public class AdministrationServiceTests {
         
         adminService.updateInstructorEmploymentDate(instructorIdList.get(2), LocalDate.of(1991, 4, 17));
         
-        assertTrue(compareInstructorEmploymentArrayList(expected, adminService.getAllInstructorEmploymentsByEmploymentDate("employed")));
+        assertTrue(compareInstructorEmploymentArrayList(expected, adminService.getAllInstructorEmploymentsOrderedByEmploymentDate("employed")));
     }
     
     @Test
@@ -403,65 +401,133 @@ public class AdministrationServiceTests {
 
     @Test
     public void testSearchSchedulesByLocation() {
-        BuildingRoom expected = new BuildingRoom("B002", "R001", 20);
+        ArrayList<Schedule> expected = new ArrayList<Schedule>();
         
-        assertTrue(expected.equalBuildNumRoomNum(adminService.getAllAvailableSchedules().get(0).getLocation()));
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByLocation("B005", "R005")));
+
+        
+        expected.add(new Schedule(scheduleIdList.get(4), "thursday", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
+        
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByLocation("B002", "R001")));
     }
 
     @Test
     public void testSearchSchedulesByMinCapacity() {
+        ArrayList<Schedule> expected = new ArrayList<Schedule>();
         
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByMinCapacity(30)));
+
+        
+        expected.add(new Schedule(scheduleIdList.get(4), "thursday", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
+        
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByMinCapacity(20)));
     }
 
     @Test
     public void testSearchSchedulesByTimeBlock() {
+        ArrayList<Schedule> expected = new ArrayList<Schedule>();
         
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByTimeBlock("mon", LocalTime.of(13, 30), 120)));
+        
+        expected.add(new Schedule(scheduleIdList.get(4), "thursday", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
+        
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByTimeBlock("thursday", LocalTime.of(13, 30), 120)));
     }
 
     @Test
     public void testSearchSchedulesByTimeBlockAndCapacity() {
+        ArrayList<Schedule> expected = new ArrayList<Schedule>();
         
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByTimeBlockAndCapacity("thur", LocalTime.of(13, 30), 120, 40)));
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByTimeBlockAndCapacity("mon", LocalTime.of(13, 30), 120, 20)));
+
+        expected.add(new Schedule(scheduleIdList.get(4), "thursday", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
+        
+        assertTrue(compareScheduleArrayList(expected, adminService.searchSchedulesByTimeBlockAndCapacity("thur", LocalTime.of(13, 30), 120, 20)));
     }
     
     @Test
-    public void testAddSeminar() {
+    public void testAddSeminar() throws DuplicateSeminarException, CourseNumberNotFoundException, InstructorIdNotFoundException {
         ArrayList<Seminar> expected = new ArrayList<Seminar>();
-        expected.add(new Seminar("SM01", new Course("Course One", "C001", 3, "Words"), 20, new Instructor("Name 1", "111111", "a@b.com")));
+        expected.add(new Seminar("SM01", new Course("Course One", "C001", 3, "D1"), 20, new Instructor("Instructor 1", instructorIdList.get(0), "e1@mail.com")));
+        expected.add(new Seminar("SM02", new Course("Course Two", "C002", 3, "D2"), 20, new Instructor("Instructor 2", instructorIdList.get(1), "e1@mail.com")));
+        expected.add(new Seminar("SM03", new Course("Course Three", "C003", 3, "D3"), 20, new Instructor("Instructor 3", instructorIdList.get(2), "e1@mail.com")));
+        expected.add(new Seminar("SM04", new Course("Course Four", "C004", 3, "D4"), 20, new Instructor("Instructor 1", instructorIdList.get(0), "e1@mail.com")));
+        expected.add(new Seminar("SM05", new Course("Course Four", "C004", 3, "D4"), 20, new Instructor("Instructor 4", instructorIdList.get(3), "e1@mail.com")));
+
+        adminService.addSeminar("SM05", "C004", 10, instructorIdList.get(3));
+        
+        assertTrue(compareSeminarArrayList(expected, adminService.getAllSeminars()));
     }
 
     @Test
-    public void testCancelSeminar() {
+    public void testCancelSeminar() throws SeminarIdNotFoundException {
+        ArrayList<Seminar> expected = new ArrayList<Seminar>();
+        expected.add(new Seminar("SM01", new Course("Course One", "C001", 3, "D1"), 20, new Instructor("Instructor 1", instructorIdList.get(0), "e1@mail.com")));
+        expected.add(new Seminar("SM02", new Course("Course Two", "C002", 3, "D2"), 20, new Instructor("Instructor 2", instructorIdList.get(1), "e1@mail.com")));
+        expected.add(new Seminar("SM03", new Course("Course Three", "C003", 3, "D3"), 20, new Instructor("Instructor 3", instructorIdList.get(2), "e1@mail.com")));
+
+        adminService.cancelSeminar("SM04");
         
+        assertTrue(compareSeminarArrayList(expected, adminService.getAllSeminars()));
     }
 
     @Test
-    public void testUpdateSeminarCourse() {
+    public void testUpdateSeminarCourse() throws SeminarIdNotFoundException, CourseNumberNotFoundException {
+        Seminar expected = new Seminar("SM03", new Course("Course Two", "C002", 3, "D2"), 20, new Instructor("Instructor 3", instructorIdList.get(2), "e3@mail.com"));
         
+        adminService.updateSeminarCourse("SM03", "C002");
+        
+        assertTrue(expected.seminarIdEquals(adminService.searchSeminarById("SM03")));
     }
 
     @Test
-    public void testUpdateSeminarCapacity() {
+    public void testUpdateSeminarCapacity() throws SeminarIdNotFoundException, SeminarRoomCapacityConflictException {
+        Seminar expected = new Seminar("SM03", new Course("Course Three", "C003", 3, "D3"), 55, new Instructor("Instructor 3", instructorIdList.get(2), "e3@mail.com"));
         
+        adminService.updateSeminarCapacity("SM03", 55);
+        
+        assertTrue(expected.seminarIdEquals(adminService.searchSeminarById("SM03")));
     }
 
     @Test
-    public void testUpdateSeminarInstructor() {
+    public void testUpdateSeminarInstructor() throws InstructorIdNotFoundException, SeminarIdNotFoundException {
+        Seminar expected = new Seminar("SM03", new Course("Course Three", "C003", 3, "D3"), 20, new Instructor("Instructor 1", instructorIdList.get(0), "e1@mail.com"));
         
+        adminService.updateSeminarInstructor("SM03", instructorIdList.get(0));
+        
+        assertTrue(expected.seminarIdEquals(adminService.searchSeminarById("SM03")));
     }
 
     @Test
-    public void testAddSeminarSchedule() {
+    public void testAddSeminarSchedule() throws DuplicateScheduleException, SeminarIdNotFoundException, ScheduleIdNotFoundException, SeminarRoomCapacityConflictException, ScheduleNotFoundException {
+        ArrayList<Schedule> expected = new ArrayList<Schedule>();
+        expected.add(new Schedule(scheduleIdList.get(0), "mon", LocalTime.of(10, 0), 60, new BuildingRoom("B001", "R001", 10)));
+        expected.add(new Schedule(scheduleIdList.get(3), "tues", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
+        expected.add(new Schedule(scheduleIdList.get(4), "thursday", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
+
+        adminService.addSeminarSchedule("SM01", scheduleIdList.get(4));
         
+        assertTrue(compareScheduleArrayList(expected, adminService.getSeminarScheduleListBySeminarId("SM01")));
     }
     
     @Test
-    public void testRemoveSeminarSchedule() {
+    public void testRemoveSeminarSchedule() throws DuplicateScheduleException, ScheduleIdNotFoundException, SeminarIdNotFoundException {
+        ArrayList<Schedule> expected = new ArrayList<Schedule>();
+        expected.add(new Schedule(scheduleIdList.get(3), "tues", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
+
+        adminService.removeSeminarSchedule("SM01", scheduleIdList.get(0));
         
+        assertTrue(compareScheduleArrayList(expected, adminService.getSeminarScheduleListBySeminarId("SM01")));
     }
     
     @Test
-    public void testGetSeminarScheduleListBySeminarId() {
+    public void testGetSeminarScheduleListBySeminarId() throws SeminarIdNotFoundException {
+        ArrayList<Schedule> expected = new ArrayList<Schedule>();
+        expected.add(new Schedule(scheduleIdList.get(0), "mon", LocalTime.of(10, 0), 60, new BuildingRoom("B001", "R001", 10)));
+        expected.add(new Schedule(scheduleIdList.get(3), "tues", LocalTime.of(13, 30), 120, new BuildingRoom("B002", "R001", 20)));
         
+        assertTrue(compareScheduleArrayList(expected, adminService.getSeminarScheduleListBySeminarId("SM01")));
     }
     
     private boolean compareBuildingRoomArrayList(ArrayList<BuildingRoom> list1, ArrayList<BuildingRoom> list2) { 
