@@ -12,6 +12,11 @@ public class DuplicateInstructorEmploymentException extends Exception {
         duplicateInstructorId = instructorEmployment.getInstructor().getInstructorId();
     }
     
+    public DuplicateInstructorEmploymentException(String instructorId) {
+        super("InstructorEmployment with InstructorID \"" + instructorId + "\" already exists");
+        duplicateInstructorId = instructorId;
+    }
+    
     public String getDuplicateInstructorId() {
         return duplicateInstructorId;
     }

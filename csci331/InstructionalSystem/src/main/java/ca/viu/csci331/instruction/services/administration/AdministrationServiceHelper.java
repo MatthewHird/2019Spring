@@ -61,17 +61,4 @@ public class AdministrationServiceHelper {
         
         return Integer.toString(scheduleId);
     }
-    
-    
-    public static String generateInstructorReport(ArrayList<InstructorEmployment> instructorEmploymentArrayList) {
-        String formattedString = "";
-        
-        for (InstructorEmployment inEmp : instructorEmploymentArrayList) {
-            formattedString += String.format("Instructor Name: %s\nInstructor ID: %s\nEmail: %s\nEmployment Status: %s\nEmployment Date: %s\n\n", 
-                    inEmp.getInstructor().getName(), inEmp.getInstructor().getInstructorId(), inEmp.getInstructor().getEmail(), 
-                    inEmp.getEmploymentStatus(), inEmp.getEmploymentDate().toString());
-        }
-        
-        return formattedString;
-    }
 }

@@ -65,16 +65,6 @@ public class ScheduleList {
         throw new ScheduleIdNotFoundException(scheduleId);
     }
     
-    public ArrayList<Schedule> searchByLocation(BuildingRoom location) {
-        ArrayList<Schedule> schedulesAtLocation = new ArrayList<Schedule>();
-        for (Schedule schedule : scheduleList) {
-            if (schedule.getLocation().equalBuildNumRoomNum(location) ) {
-                schedulesAtLocation.add(schedule);
-            }
-        }
-        return schedulesAtLocation;
-    }
-    
     public ArrayList<Schedule> searchByLocation(String buildingNumber, String roomNumber) {
         ArrayList<Schedule> schedulesAtLocation = new ArrayList<Schedule>();
         for (Schedule schedule : scheduleList) {

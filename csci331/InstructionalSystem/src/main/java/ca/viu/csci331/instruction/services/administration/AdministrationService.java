@@ -28,7 +28,6 @@ import ca.viu.csci331.instruction.exception.InvalidCourseNameException;
 import ca.viu.csci331.instruction.exception.InvalidCourseNumberException;
 import ca.viu.csci331.instruction.model.BuildingRoom;
 import ca.viu.csci331.instruction.model.Course;
-import ca.viu.csci331.instruction.model.Instructor;
 import ca.viu.csci331.instruction.model.InstructorEmployment;
 import ca.viu.csci331.instruction.model.Schedule;
 import ca.viu.csci331.instruction.model.Seminar;
@@ -40,7 +39,6 @@ public class AdministrationService {
     private ScheduleList availableScheduleList;
     private ScheduleList usedScheduleList;
     private SeminarList seminarList;
-    
     
     
     public AdministrationService() {
@@ -72,7 +70,7 @@ public class AdministrationService {
         } while (employmentList.containsInstructorId(instructorId));
         
         try {
-            employmentList.add(new InstructorEmployment(new Instructor(instructorName, instructorId, instructorEmail)));
+            employmentList.add(instructorName, instructorId, instructorEmail);
         } catch (DuplicateInstructorEmploymentException e) {
             e.printStackTrace();
         }
@@ -289,10 +287,6 @@ public class AdministrationService {
     
     public ArrayList<Schedule> searchSchedulesByLocation(String buildingNumber, String roomNumber) {
         return availableScheduleList.searchByLocation(buildingNumber, roomNumber);
-    }
-    
-    public ArrayList<Schedule> searchSchedulesByLocation(BuildingRoom location) {
-        return availableScheduleList.searchByLocation(location);
     }
     
     public ArrayList<Schedule> searchSchedulesByMinCapacity(int minCapacity) {

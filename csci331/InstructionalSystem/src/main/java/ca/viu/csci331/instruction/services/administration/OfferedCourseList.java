@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.viu.csci331.instruction.exception.CourseNameNotFoundException;
-import ca.viu.csci331.instruction.exception.CourseNotFoundException;
 import ca.viu.csci331.instruction.exception.CourseNumberNotFoundException;
 import ca.viu.csci331.instruction.exception.DuplicateCourseNameException;
 import ca.viu.csci331.instruction.exception.DuplicateCourseNumberException;
@@ -23,20 +22,9 @@ public class OfferedCourseList {
     }
     
     
-    public int courseCount() {
+    public int getCourseCount() {
         return courseList.size();
     }
-    
-    
-    public void add(Course addedCourse) throws DuplicateCourseNameException, DuplicateCourseNumberException {
-        if (containsCourseName(addedCourse.getName())) {
-            throw new DuplicateCourseNameException(addedCourse);
-        } else if (containsCourseNumber(addedCourse.getCourseNumber())) {
-            throw new DuplicateCourseNumberException(addedCourse);
-        }
-        
-        courseList.add(addedCourse);
-    };
     
     
     public void add(String courseName, String courseNumber, double courseCredit, String courseDescription) 
@@ -49,21 +37,7 @@ public class OfferedCourseList {
         
         courseList.add(new Course(courseName, courseNumber, courseCredit, courseDescription));
     };
-    
-    
-    public Course remove(Course cancelledCourse) throws CourseNotFoundException {
-        int removeIndex = -1;
-        for (int i = 0; i < courseList.size(); i++) {
-            if (courseList.get(i).getCourseNumber().equals(cancelledCourse.getCourseNumber())) {
-                removeIndex = i;
-                break;
-            }
-        }
-        if (removeIndex == -1) {
-            throw new CourseNotFoundException(cancelledCourse);
-        }
-        return courseList.remove(removeIndex);
-    }
+
     
     public Course remove(String cancelledCourseNumber) throws CourseNumberNotFoundException {
         int removeIndex = -1;
@@ -77,15 +51,6 @@ public class OfferedCourseList {
             throw new CourseNumberNotFoundException(cancelledCourseNumber);
         }
         return courseList.remove(removeIndex);
-    }
-    
-    
-    public String allToString() {
-        String asString = "";
-        for (Course course : courseList) {
-            asString += course.toString();
-        }
-        return asString;
     }
     
     public Course searchByName(String courseName) throws CourseNameNotFoundException {
@@ -131,4 +96,12 @@ public class OfferedCourseList {
         }
         return false;
     }
+    
+//    public String allToString() {
+//        String asString = "";
+//        for (Course course : courseList) {
+//            asString += course.toString();
+//        }
+//        return asString;
+//    }
 }

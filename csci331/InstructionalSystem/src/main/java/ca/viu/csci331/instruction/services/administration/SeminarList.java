@@ -20,33 +20,12 @@ public class SeminarList {
         return seminarList.size();
     }
     
-    public void add(Seminar addedSeminar) throws DuplicateSeminarException {
-        if (containsSeminarId(addedSeminar)) {
-            throw new DuplicateSeminarException(addedSeminar);
-        }
-        seminarList.add(addedSeminar);
-    }
-    
     public void add(String semniarId, Course course, int capacity, 
             Instructor instructor) throws DuplicateSeminarException {
         if (containsSeminarId(semniarId)) {
             throw new DuplicateSeminarException(semniarId);
         }
         seminarList.add(new Seminar(semniarId, course, capacity, instructor));
-    }
-    
-    public Seminar remove(Seminar removedSeminar) throws SeminarIdNotFoundException {
-        int removeIndex = -1;
-        for (int i = 0; i < seminarList.size(); i++) {
-            if (seminarList.get(i).seminarIdEquals(removedSeminar)) {
-                removeIndex = i;
-                break;
-            }
-        }
-        if (removeIndex == -1) {
-            throw new SeminarIdNotFoundException(removedSeminar.getSeminarId());
-        }
-        return seminarList.remove(removeIndex);
     }
     
     public Seminar remove(String removedSeminarId) throws SeminarIdNotFoundException {
@@ -70,15 +49,6 @@ public class SeminarList {
             }
         }
         throw new SeminarIdNotFoundException(seminarId);
-    }
-    
-    public boolean containsSeminarId(Seminar testSeminar) {
-        for (Seminar seminar : seminarList) {
-            if (seminar.seminarIdEquals(testSeminar)) {
-                return true;
-            }
-        }
-        return false;
     }
     
     public boolean containsSeminarId(String testSeminarId) {

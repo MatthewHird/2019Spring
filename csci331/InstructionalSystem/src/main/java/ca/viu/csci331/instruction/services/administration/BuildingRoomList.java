@@ -18,33 +18,11 @@ public class BuildingRoomList {
         return roomList.size();
     }
     
-    public void add(BuildingRoom addedRoom) throws DuplicateBuildingRoomException {
-        if (containsBuildingRoom(addedRoom)) {
-            throw new DuplicateBuildingRoomException(addedRoom);
-        }
-        roomList.add(addedRoom);
-    }
-    
     public void add(String buildingNumber, String roomNumber, int capacity) throws DuplicateBuildingRoomException {
         if (containsBuildingRoomNumber(buildingNumber, roomNumber)) {
             throw new DuplicateBuildingRoomException(buildingNumber, roomNumber);
         }
         roomList.add(new BuildingRoom(buildingNumber, roomNumber, capacity));
-    }
-    
-    public BuildingRoom remove(BuildingRoom addedRoom) throws BuildingRoomNotFoundException {
-        int removeIndex = -1;
-        for (int i = 0; i < roomList.size(); i++) {
-            if (roomList.get(i).getBuildingNumber().equals(addedRoom.getBuildingNumber())
-                    && roomList.get(i).getRoomNumber().equals(addedRoom.getRoomNumber())) {
-                    removeIndex = i;
-                    break;
-            }
-        }
-        if (removeIndex == -1) {
-            throw new BuildingRoomNotFoundException(addedRoom);
-        }
-        return roomList.remove(removeIndex);
     }
     
     public BuildingRoom remove(String buildingNumber, String roomNumber) throws BuildingRoomNotFoundException {
@@ -101,10 +79,5 @@ public class BuildingRoomList {
             }
         }
         return false;
-    }
-    
-    public boolean containsBuildingRoom(BuildingRoom buildingRoom) {
-        return containsBuildingRoomNumber(buildingRoom.getBuildingNumber(), 
-                buildingRoom.getRoomNumber());
     }
 }

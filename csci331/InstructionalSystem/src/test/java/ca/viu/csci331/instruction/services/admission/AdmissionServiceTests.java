@@ -417,7 +417,6 @@ public class AdmissionServiceTests {
         } else {
             return false;
         }
-        
         return true;
     }
 }

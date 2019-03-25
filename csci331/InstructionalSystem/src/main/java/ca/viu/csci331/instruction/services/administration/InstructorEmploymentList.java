@@ -1,6 +1,5 @@
 package ca.viu.csci331.instruction.services.administration;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,47 +19,12 @@ public class InstructorEmploymentList {
         return instructorEmployments.size();
     }
     
-    public void add(InstructorEmployment addedInstructorEmployment) throws DuplicateInstructorEmploymentException {
-            if (!containsInstructorId(addedInstructorEmployment.getInstructor().getInstructorId())) {
-                instructorEmployments.add(addedInstructorEmployment);
-            } else {
-                throw new DuplicateInstructorEmploymentException(addedInstructorEmployment);
-            }
-    }
-    
-    public void add(String instructorName, String instructorId, String instructorEmail, 
-            String employmentStatus, LocalDate employmentDate) throws DuplicateInstructorEmploymentException {
-        
-        this.add(new InstructorEmployment(
-                new Instructor(instructorName, instructorId, instructorEmail), employmentStatus, employmentDate ));
-    }
-    
-    public InstructorEmployment remove(InstructorEmployment removedInstructorEmployment) throws InstructorIdNotFoundException {
-        int removeIndex = -1;
-        for (int i = 0; i < instructorEmployments.size(); i++) {
-            if (instructorEmployments.get(i).instructorIdEquals(removedInstructorEmployment)) {
-                removeIndex = i;
-                break;
-            }
-        }
-        if (removeIndex == -1) {
-            throw new InstructorIdNotFoundException(removedInstructorEmployment.getInstructor().getInstructorId());
-        }
-        return instructorEmployments.remove(removeIndex);
-    }
-    
-    public InstructorEmployment remove(Instructor removedInstructor) throws InstructorIdNotFoundException {
-        int removeIndex = -1;
-        for (int i = 0; i < instructorEmployments.size(); i++) {
-            if (instructorEmployments.get(i).instructorIdEquals(removedInstructor)) {
-                removeIndex = i;
-                break;
-            }
-        }
-        if (removeIndex == -1) {
-            throw new InstructorIdNotFoundException(removedInstructor.getInstructorId());
-        }
-        return instructorEmployments.remove(removeIndex);
+    public void add(String instructorName, String instructorId, String instructorEmail) throws DuplicateInstructorEmploymentException {
+        if (containsInstructorId(instructorId)) {
+            throw new DuplicateInstructorEmploymentException(instructorId);
+        } 
+        instructorEmployments.add(new InstructorEmployment(
+                new Instructor(instructorName, instructorId, instructorEmail)));
     }
     
     public InstructorEmployment remove(String removedInstructorId) throws InstructorIdNotFoundException {
@@ -114,69 +78,6 @@ public class InstructorEmploymentList {
         throw new InstructorIdNotFoundException(instructorId);
     }
     
-    public ArrayList<InstructorEmployment> searchByEmploymentDate(LocalDate employmentDate) {
-        ArrayList<InstructorEmployment> instructorEmploymentsWithDate = new ArrayList<InstructorEmployment>();
-        for (InstructorEmployment instructorEmployment : instructorEmployments) {
-            if (instructorEmployment.getEmploymentDate().equals(employmentDate)) {
-                instructorEmploymentsWithDate.add(instructorEmployment);
-            }
-        }
-        return instructorEmploymentsWithDate;
-    }
-    
-    public ArrayList<InstructorEmployment> searchByEmploymentDateRange(LocalDate employmentDateStart, LocalDate employmentDateEnd) {
-        LocalDate rangeStart = null;
-        LocalDate rangeEnd = null;
-        
-        if (employmentDateStart.compareTo(employmentDateEnd) > 0) {
-            rangeStart = employmentDateEnd;
-            rangeEnd = employmentDateStart;
-        } else {
-            rangeStart = employmentDateStart;
-            rangeEnd = employmentDateEnd;
-        }
-        
-        ArrayList<InstructorEmployment> instructorEmploymentsWithDateRange = new ArrayList<InstructorEmployment>();
-        for (InstructorEmployment instructorEmployment : instructorEmployments) {
-            if (instructorEmployment.getEmploymentDate().compareTo(rangeStart) >= 0
-                    && instructorEmployment.getEmploymentDate().compareTo(rangeEnd) <= 0) {
-                instructorEmploymentsWithDateRange.add(instructorEmployment);
-            }
-        }
-        return instructorEmploymentsWithDateRange;
-    }
-    
-    public ArrayList<InstructorEmployment> searchByEmploymentDateMonth(int employmentMonth, int employmentYear) {
-        ArrayList<InstructorEmployment> instructorEmploymentsWithDateMonth = new ArrayList<InstructorEmployment>();
-        for (InstructorEmployment instructorEmployment : instructorEmployments) {
-            if (instructorEmployment.getEmploymentDate().getMonthValue() == employmentMonth) {
-                if (instructorEmployment.getEmploymentDate().getYear() == employmentYear) {
-                    instructorEmploymentsWithDateMonth.add(instructorEmployment);
-                }
-            }
-        }
-        return instructorEmploymentsWithDateMonth;
-    }
-    
-    public ArrayList<InstructorEmployment> searchByEmploymentDateYear(int employmentYear) {
-        ArrayList<InstructorEmployment> instructorEmploymentsWithDateYear = new ArrayList<InstructorEmployment>();
-        for (InstructorEmployment instructorEmployment : instructorEmployments) {
-            if (instructorEmployment.getEmploymentDate().getYear() == employmentYear) {
-                instructorEmploymentsWithDateYear.add(instructorEmployment);
-            }
-        }
-        return instructorEmploymentsWithDateYear;
-    }
-    
-    public String allToString() {
-        String asString = "";
-        for (InstructorEmployment instructorEmployment : instructorEmployments) {
-            asString += instructorEmployment.toString();
-        }
-        return asString;
-    }
-    
-    
     public boolean containsInstructorId(String testInstructorId) {
         for (InstructorEmployment instructorEmployment : instructorEmployments) {
             if (instructorEmployment.instructorIdEquals(testInstructorId)) {
@@ -185,4 +86,12 @@ public class InstructorEmploymentList {
         }
         return false;
     }
+    
+//    public String allToString() {
+//        String asString = "";
+//        for (InstructorEmployment instructorEmployment : instructorEmployments) {
+//            asString += instructorEmployment.toString();
+//        }
+//        return asString;
+//    }
 }
