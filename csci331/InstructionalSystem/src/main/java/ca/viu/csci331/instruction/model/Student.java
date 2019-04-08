@@ -5,7 +5,7 @@ package ca.viu.csci331.instruction.model;
  * @author Matthew Hird
  * @date Feb. 12, 2019
  */
-public class Student {
+public class Student implements Comparable<Object> {
     private String name;
     private String studentId;
     private String email;
@@ -48,5 +48,11 @@ public class Student {
     @Override
     public String toString() {
         return String.format("%s\n%s\n%s\n", getName(), getStudentId(), getEmail());
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        Student s = (Student) o;
+        return this.getStudentId().compareTo(s.getStudentId());
     }
 }
