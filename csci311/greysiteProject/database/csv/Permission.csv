@@ -1,0 +1,3 @@
+permission_id (tinyint(1)),permission_name (tinytext)
+0,Free
+1,Paid

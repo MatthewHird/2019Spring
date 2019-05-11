@@ -1,0 +1,99 @@
+/*
+ *  All Sarah's. I didn't touch this.
+ *  author: Matthew Hird
+ *  csciId: hirdm
+ *  date: Jan 21, 2019
+ *  links: 
+ */
+
+body {
+	background-color: black;
+	font-family: arial, "sans serif";
+}
+header, footer{
+	text-align: center;
+	width: 100%;
+	background-color: black;
+	color: #ddd;
+		
+}
+h2{
+	text-align: center;
+}
+footer{
+	padding-top: 10px;
+	font-size: small;
+	color: #aaa;
+}
+#main{
+	min-height: 380px;
+	background-color: white;
+	
+}
+.content{
+	padding: 10px;
+}
+div.myNavBar{
+	background-color: #333;
+	height: 45px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+ul.myNav li{
+	display: inline;
+	padding: 10px 22px;
+	background-color: #333;
+	margin: 2px;
+	
+}
+ul.myNav li a{
+	text-decoration: none;
+	color: #ddd;
+	font-size: medium;
+}
+ul.myNav li a.active{
+	text-decoration: none;
+	color: #fff;
+	font-size: large;
+}
+
+ul.myNav li a:hover{
+	color: white;
+	font-size: large;
+}
+.inputRow{
+	
+	padding: 10px;
+}
+.myLabel{
+	margin: 0; 
+  	padding: 0; 
+  	display: block; 
+ 	font-size: 100%; 
+  	padding-top: 2px; 
+  	padding-right: 5px; 
+  	width: 200px; 
+  	text-align: right; 
+  	float: left; 
+}
+
+
+.myInput{
+	margin: 0; 
+  	padding: 0; 
+  	display: block; 
+  	font-size: 100%; 
+  	width: 200px;
+  	padding-left: 5px;
+	/*border:1px solid green;*/
+}
+input[type='submit']{
+	width: 100px;
+	margin-left: 320px;
+}
+input:invalid{
+	border: 1px dashed red;
+}
+input:valid{
+	border: 1px solid black;
+}

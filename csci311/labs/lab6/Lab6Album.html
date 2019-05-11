@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!-- 
+  author: Matthew Hird
+  csciId: hirdm
+  date: Feb 23, 2019
+  links: 
+    Aspect Ratio Box Tutorial>>> https://css-tricks.com/aspect-ratio-boxes/
+    banner-meow>> https://www.pexels.com/photo/two-orange-and-brown-cats-reclined-on-brown-rug-1386422/
+    meow-cats-1>> https://www.pexels.com/photo/animal-cat-face-close-up-feline-416160/
+    meow-cats-2>> https://www.pexels.com/photo/orange-tabby-cat-on-brown-textile-74177/
+    meow-cats-3>> https://www.pexels.com/photo/relaxation-cat-rest-favorite-39255/
+    meow-cats-4>> https://www.pexels.com/photo/tabby-kittens-on-floral-comforter-160755/
+    meow-cats-5>> https://www.pexels.com/photo/adorable-animal-baby-beautiful-479009/
+-->
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lab6Style.css"/>
+  <style>
+  .aspect-ratio-box {
+    position: relative;
+    overflow: hidden; 
+    width: 100%; 
+    height: 0;
+    padding-top: 66%;
+  }
+  .aspect-ratio-box-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+  .carousel-inner img {
+    width: 100%;
+  }
+  #catCarousel {
+    width: 70%;
+    max-width: 700px;
+    margin: 0 15%;
+  }
+  .carousel-caption p {
+    color: white;
+    text-shadow: .2rem .2rem .2rem black;
+  }
+  </style>
+    <title>Lab 6 Album - Matt's CSCI 311</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-light bg-light fixed-top">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Lab6Blog.html">Blog</a></li>
+          <li class="nav-item"><a class="active nav-link" href="Lab6Album.html">Album</a></li>
+        </ul> 
+      </nav>
+      <div class="headerBanner p-4">
+        <h1><i>Matt's Lab 6 Album</i></h1>
+        <p>Let's see some cats!</p> 
+      </div> 
+    </header>
+   
+    <main role="main">
+      <div class="container">
+        <h2 class="text-center">The Ultimate Carousel</h2>
+        <div id="catCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#catCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#catCarousel" data-slide-to="1"></li>
+            <li data-target="#catCarousel" data-slide-to="2"></li>
+            <li data-target="#catCarousel" data-slide-to="3"></li>
+            <li data-target="#catCarousel" data-slide-to="4"></li>
+          </ol>
+
+          <div class="carousel-inner">
+            
+            <div class="carousel-item active">
+              <a href="img/meow-cats-1.jpeg" target="_blank">
+                <div class="aspect-ratio-box">
+                  <div class="aspect-ratio-box-inner">
+                    <img src="img/meow-cats-1.jpeg" alt="Cat Lurking in Blanket">
+                  </div>
+                </div>
+                <div class="carousel-caption">
+                  <p>I sneakzin!!</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="carousel-item">
+              <a href="img/meow-cats-2.jpeg" target="_blank">
+                <div class="aspect-ratio-box">
+                  <div class="aspect-ratio-box-inner">
+                    <img src="img/meow-cats-2.jpeg" alt="Kitty Paws">
+                  </div>
+                </div>  
+                <div class="carousel-caption">
+                  <p>Look de pawz!</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="carousel-item">
+              <a href="img/meow-cats-3.jpeg" target="_blank">
+                <div class="aspect-ratio-box">
+                  <div class="aspect-ratio-box-inner">
+                    <img src="img/meow-cats-3.jpeg" alt="Cat Lying on Back">
+                  </div>
+                </div>
+                <div class="carousel-caption">
+                  <p>Hai! I'm a cat</p>
+                </div>
+              </a>
+            </div>
+            
+            <div class="carousel-item">
+              <a href="img/meow-cats-4.jpeg" target="_blank">
+                <div class="aspect-ratio-box">
+                  <div class="aspect-ratio-box-inner">
+                    <img src="img/meow-cats-4.jpeg" alt="Kittens Playing with Mouse Toy">
+                  </div>
+                </div>
+                <div class="carousel-caption">
+                  <p>Float like a cat; sting like a cat!</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="carousel-item">
+              <a href="img/meow-cats-5.jpeg" target="_blank">
+                <div class="aspect-ratio-box">
+                  <div class="aspect-ratio-box-inner">
+                    <img src="img/meow-cats-5.jpeg" alt="Cat Lying on Tile Floor">
+                  </div>
+                </div>
+                <div class="carousel-caption">
+                  <p>No!</p>
+                </div>
+              </a>
+            </div>
+          
+          </div>
+          
+          <a class="carousel-control-prev" href="#catCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          
+          <a class="carousel-control-next" href="#catCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="sr-only">Next</span>
+          </a>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer auxilary">
+      <div class="pl-1">
+        <small>Copyright &copy; Matthew Hird, 2019</small>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

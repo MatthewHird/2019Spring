@@ -1,0 +1,53 @@
+
+This README provides the specifications for the lab 3 exercise on
+implementing and using closures.
+
+Lab requirements:
+-----------------
+
+This lab involves the use of closures: functions which create and
+   return other functions.  Specifically, your will be creating
+   a buildFormatter function, whose purpose is to create and
+   return functions for customized printing of data.
+
+Complete the lisp file lab3a.cl to hold your closure code, and
+   the lab3b.cl executable to ask the user for values for N and L
+   and use those to test your closure.
+
+buildFormatter details:
+
+   buildFormatter takes a single argument, N, that should be
+      a positive integer.  If N is not a positive integer then
+      buildFormatter returns 'BADWIDTH.
+
+   buildFormatter creates and returns a lambda function that
+      takes a single parameter, L.  If L is not a list then
+      the lambda function prints L padded to width N. If L is
+      a list then the lambda function prints each element of L
+      padded to width N.
+
+   One approach is to have (buildFormatter 5) create and return
+      a lambda function that uses (format t "~5A" L) to print non-lists,
+      and uses (format t "~{~5A~}" L) for lists.
+   To do this, you need to embed the correct string into the format statement
+      in your lambda function, i.e. using (format nil ??????) to create the
+      "~5A" or "~{~5A~}" part of the format statement.
+   Note that if you want to print a ~ into a string, the syntax is ~~.
+
+
+Example of build use:
+---------------------
+   (defvar f (buildFormatter 5))
+   (funcall f '(1 12 123 1234)) ; should print "1    12   123  1234 "
+   (funcall f 25))              ; should print "25   "
+
+
+Submitting
+----------
+Make sure you have added, committed, and pushed your completed work, e.g.
+
+   git add lab3a.cl
+   git add lab3b.cl
+   git commit -m "lab 3 complete"
+   git push
+

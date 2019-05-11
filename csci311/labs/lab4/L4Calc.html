@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- 
+  author: Matthew Hird
+  csciId: hirdm
+  date: Jan 13, 2019
+  links: 
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Lab 4: Debugging JavaScript Errors</title>
+    <link rel="stylesheet" type="text/css" href="myStyles.css" />
+  </head>
+
+  <body> 
+    <header>
+      <h1>Debugging JavaScript</h1>
+    </header>
+    
+    <div id="main">
+      <ul class="myNav">
+        <li class="pagelink"><a href="./index.html">Home</a></li>
+        <li class="pagelink"><a href="./Lab4.html">Lab 4</a></li>
+        <li class="pagelink"><a href="./L4Calc.html">Calculator</a></li>
+      </ul>
+   
+      <div id="calcWidget" class="myWidget">
+        <div id="calcWidgeInner">
+          <fieldset name="currentFormulaField">
+            <div class="inputRow">
+              <textarea id="currentFormula" class="myInput" rows="4" readonly="readonly" 
+                  name="curFormula"></textarea>
+            </div>
+          </fieldset>
+          <fieldset id="numericField" name="numField">
+            <div class="inputRow">
+              <label for="numericInput" class="myLabel">Numeric Value: </label>
+              <input id="numericInput" class="myInput" type="text" name="numIn"
+                  placeholder="Type value here" />
+            </div>
+            <div class="inputRow">
+              <input id="numericButton" class="myInput myButton" type="button" name="numButt" 
+                  value="Include value in formula" onclick="myCalc.pushNumField()" />
+            </div>
+          </fieldset>
+          
+          <fieldset id="operatorField" name="operField" disabled="disabled">
+            <div class="inputRow">
+              <label for="operatorDropdown" class="myLabel">Operator: </label>
+              <select id="operatorDropdown" class="myInput mySelect" name="operators">
+                <option selected="selected" value="n/a">Please select operator</option>
+                <option value="+">+ (add)</option>
+                <option value="-">- (subtract)</option>
+                <option value="*">* (multiply)</option>
+                <option value="/">/ (divide)</option>
+              </select>
+            </div>
+            <div class="inputRow">
+              <input id="operatorButton" class="myInput myButton" type="button" name="operButt"
+                  value="Include operator in formula" onclick="myCalc.pushOperField()" />
+            </div>
+          </fieldset>
+
+          <fieldset id="mainField" name="mField">
+            <div class="inputRow">
+              <label for="calcDisplay" class="myLabel">Result: </label>
+              <input id="calcDisplay" class="myInput" type="text" name="calcDisp" 
+                  readonly="readonly" value="" />
+            </div>
+            <div class="inputRow">
+              <input id="clearButton" class="myInput myButton" type="button" name="clearButt" 
+                  value="Clear All" onclick="myCalc.resetCalculator()" />
+            </div>
+            <div class="inputRow">
+              <input id="resultButton" class="myInput myButton" type="button" name="resultButt" 
+                  value="Calculate Result" onclick="myCalc.calculateResult()" />
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <small>Copyright &copy; Matthew Hird, 2019</small>
+    </footer>
+    
+    <script type="text/javascript" src="L4.js"></script>
+  </body>
+</html>

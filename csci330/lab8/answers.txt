@@ -1,0 +1,65 @@
+The objective for this lab is to investigate order of operations and side effects
+in expressions and function calls in C.
+There are three C expressions we are interested in, one in each program:
+   in lab8a: z = x++ * ++y;
+   in lab8b: z = (x++,x) * (++y,y);
+   in lab8c: r = p(x++, ++y, f(&z), z/y);
+
+In the file answers.txt, for each of the three expressions listed above, provide a
+clear explanation of the precise order in which the operations and side effects must
+take place, justifying your explanation based on the output of the three programs.
+
+
+8a) 
+
+x++     Current value of x is saved (10), then x increments to 11, and 10 is returned.
+++y     y increments from 100 to 101, and 101 is returned.
+*       Multiplies operands before and after it (10 and 101) to get 1010, and returns 1010.
+=       Assigns right value in left variable, so z is assigned 1010.
+
+
+8b)
+
+(       Items in first set of () evaluated first.
+x++     Current value of x is saved (10), then x increments to 11, and 10 is returned.
+x       Returns current value of x (11).     
+,       Ignores return value of first operand (10); returns return value of second operand (11). 
+)       Returns value of expressions evaluated in (), so it returns 11.
+(       Items in second set of () evaluated next.
+++y     y increments from 100 to 101, and 101 is returned.
+y       Returns current value of y (101).     
+)       Returns value of expressions evaluated in (), so it returns 101.
+*       Multiplies operands before and after it (11 and 101) to get 1111, and returns 1111.
+=       Assigns right value in left variable, so z is assigned 1111.
+
+
+8c)
+
+parameters are evaluated in p() in right to left order. 
+z/y     Evaluates 100/10, returning 10. 10 is passed into p as parameter d.
+parameter is evaluated in f() 
+&z      The address of z is returned, and passed into p as parameter a.
+f is actually called now with the parameter (address of z).
+(       Item in () is evaluated.
+*a      Address a is dereferenced, giving the value at address a, which is the value at z (100).
+)       Returns value of expression in (), so it returns 100.
+*=      Multiplies value or right side (2) by value of left side (100), give us 200, and stores 
+            it in address of left side which is the variable at adress a (x), so x = 200.
+(       Items in outer () are evaluated.
+(       Item in inner () is evaluated.
+*a      Address a is dereferenced, giving the value at address a, which is the value at z (200).
+)       Returns value of expression in inner (), so it returns 200.
+*       Multiplies operands before and after it (3 and 200) to get 600, and returns 600.
+)       Returns value of expression in outer (), so it returns 600.
+/       Divides left operand (600) by right operand (2) to get 300, and returns 300.
+return  Exits function f, returning the right operand (300).
+The value returned by f (300) is passed into p as parameter c.
+++y     y increments from 10 to 11, and 11 is returned. 11 is passed into p as parameter b.
+x++     Current value of x is saved (1), then x increments to 2, and 1 is returned. 1 is passed
+            into p as parameter a.
+p is actually called now with the parameters (1, 11, 300, 10).
+*       Multiplies operands before and after it (a=1 and b=11) to get 11, and returns 11.
+*       Multiplies operands before and after it (11 and c=300) to get 3300, and returns 3300.
+*       Multiplies operands before and after it (3300 and d=10) to get 33000, and returns 33000.
+return  Exits function p, returning the right operand (33000).
+=       Assigns right value into left variable, so r is assigned 33000.

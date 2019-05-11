@@ -1,0 +1,53 @@
+
+This README provides the specifications for the lab 1 take home exercise
+
+Complete the lisp file lab1a.cl to hold the following two functions,
+   evens and revodds, described below.
+
+   evens takes a single parameter, L. If L is not a list, or is an
+       empty list then the function returns nil. Otherwise, the
+       function returns a list containing the elements in the
+       even-numbered positions of L.  The evens function must not
+       produce any output.
+
+   revodds is a tail-recursive function that takes two parameters,
+       one of them a required parameter, L, the other an optional
+       parameter, sofar, with a default value of nil.  If L is
+       not a list, or is an empty list then the function returns
+       the value of sofar.  Otherwise, the function returns a list
+       containing the elements in the odd-numbered positions of L,
+       but in reverse order.  The revodds function must not produce
+       any output.
+
+   For example:
+      (evens '())               ; returns nil
+      (evens '(10))             ; returns (10)
+      (evens '(10 20))          ; returns (10)
+      (evens '(10 20 30))       ; returns (10 30)
+      (evens '(10 20 30 40))    ; returns (10 30)
+      (revodds '())             ; returns nil
+      (revodds '(10))           ; returns nil
+      (revodds '(10 20))        ; returns (20)
+      (revodds '(10 20 30))     ; returns (20)
+      (revodds '(10 20 30 40))  ; returns (40 20)
+   etc.
+
+Note: make sure your functions are named correctly and that they RETURN the
+   expected value (neither evens nor revodds is permitted to do ANY output).
+
+You must also complete the executable script lab1b.cl, which loads lab1a.cl and
+  defines a function named main that prompts the user to enter a value for L,
+  stores it in a local variable, then calls (evens L) and displays L and the
+  returned result, then calls (revodds L) and displays L and the result.
+
+Your script must call your main function.
+
+Submitting
+----------
+Make sure you have added, committed, and pushed your completed work, e.g.
+
+   git add lab1a.cl
+   git add lab1b.cl
+   git commit -m "lab 1 complete"
+   git push
+

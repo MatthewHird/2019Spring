@@ -1,0 +1,14 @@
+argc: 0x7fff37ebc39c
+argv: 0x7fff37ebc390
+mainVar: 0x7fff37ebc3ac
+mainConst: 0x7fff37ebc3a8
+GlobalConst: 0x55983b47aa14
+GlobalVar: 0x55983b67b040
+staticVar: 0x55983b67b044
+localVar: 0x7fff37ebc374
+localConst: 0x7fff37ebc370
+loopVar: 0x7fff37ebc36c
+loopConst: 0x7fff37ebc368
+ptr after val assign: 0x55983cfb5010
+ptr after if: 0x55983cfb5010
+ptr after free: 0x55983cfb5010

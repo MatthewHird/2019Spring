@@ -1,0 +1,27 @@
+
+Lab 8
+=====
+
+The objective for this lab is to investigate order of operations and side effects
+in expressions and function calls in C.
+
+The repository contains a collection of C programs: lab8a.c, liab8b.c, and lab8c.c.
+
+Compile each of the programs using the makefile (make all will compile all at once).
+
+Run each of the programs, storing the results in a matching .out file i.e.
+    ./lab8a > lab8a.out
+    ./lab8b > lab8b.out
+    ./lab8c > lab8c.out
+
+There are three C expressions we are interested in, one in each program:
+   in lab8a: z = x++ * ++y;
+   in lab8b: z = (x++,x) * (++y,y);
+   in lab8c: r = p(x++, ++y, f(&z), z/y);
+
+In the file answers.txt, for each of the three expressions listed above, provide a
+clear explanation of the precise order in which the operations and side effects must
+take place, justifying your explanation based on the output of the three programs.
+
+As always, be sure to add, commit, and push your completed lab.
+

@@ -1,0 +1,12 @@
+ship_id,energy,min_primary_range,max_primary_range,
+9,4,\N,\N,
+10,5,\N,\N,
+11,1,\N,\N,
+12,\N,3,5,
+13,\N,3,5,
+18,4,\N,\N,
+19,4,\N,\N,
+31,6,\N,\N,
+32,1,\N,\N,
+33,\N,2,4,
+34,\N,2,4

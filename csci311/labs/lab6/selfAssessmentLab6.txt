@@ -1,0 +1,32 @@
+I ran into major issues with this lab.
+
+First, I wasted about 3 hours thinking I wasn't understanding Bootstrap at all,
+when really it was just a caching issue. Whenever I made changes in the HTML 
+file, Chrome would immediatly update make the changes when I updated the page,
+so I didn't think it could be a cache issue. Also I wouls add Bootstrap classes
+to HTML elements and make changes in the CSS stylesheet, and stuff would change,
+just not always how I wanted it to. It turned out the issue was it updating the
+HTML page, but was grabbing the CSS stylesheet from the cache. So for 3 hours,
+none of the style I added got applied.
+
+I feel like an idiot, but at least now I know to look out for it. I also now
+know that the Chrome setting to disable caching (which I had activated) only 
+works when the Developer Tools app is open.
+
+I also spent an hour and a half spinning my wheels trying to get the Bootstrap 
+carousel to work. I was trying everything and looking up everything. In the end,
+I figured out that both the Bootstrap website and the W3 website two different sets of examples. I assume 1 set is for Bootstrap 3 and the other for 
+Bootstrap 4, but site explained that it was different between 3 and 4 at all.
+
+I didn't do any of the optional or bonus tasks this week.
+I did look at a tutorial on how to display images with specific aspect ratios.
+The method works well, but is very clunky to implement initially considering 
+how simple it should be.
+
+Also, in the carousel, I have the contents of each carousel item wrapped in an 
+anchor. It may look a bit odd, but it has purpose. If the anchor is wrapped 
+around the img tag, the the caption text is not a part of the link. It isn't 
+much of an issue except if their is a lot of text on a phone, it's really easy 
+to hit the text, which causes no action to be taken. By wrapping the anchor 
+around all the contents, this issue is avoided. Since the controls are applied 
+afterwards, they aren't affected by the anchor, thus still work properly.  

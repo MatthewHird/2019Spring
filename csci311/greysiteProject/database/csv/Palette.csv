@@ -1,0 +1,5 @@
+palette_id (int),name (tinytext),user_id  FK (int),type (tinytext),size (tinyint),creation_date (datetime),modification_date (datetime)
+0,Test Palette 0,0,simple,5,2019-03-17,2019-03-17
+1,Test Palette 1,0,simple,5,2019-03-17,2019-03-25
+2,Test Palette 2,0,simple,5,2019-03-25,2019-03-25
+3,Test Palette 3,1,simple,5,2019-03-25,2019-03-30

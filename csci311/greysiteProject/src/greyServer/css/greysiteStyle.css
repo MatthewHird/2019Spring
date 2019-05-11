@@ -1,0 +1,267 @@
+/*
+  author: Matthew Hird
+  csciId: hirdm
+  date: Apr 1, 2019
+  links: 
+*/
+
+.no-js .top-bar {
+  display: none;
+}
+
+@media screen and (min-width: 40em) {
+  .no-js .top-bar {
+    display: block;
+  }
+
+  .no-js .title-bar {
+    display: none;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: #EEE;
+  margin-bottom: 30px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+
+  background-color: black;
+  color: #DDDDDD;
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.tn-siteLogo-container {
+  line-height: 38px;
+}
+
+.tn-siteLogo {
+  vertical-align: middle;
+}
+
+@media (max-width:459px) {
+  #topNav a.tn-menu-item, #topNav button.tn-menu-item {
+    font-size: 14px;
+    padding: 10px 10px;
+  }
+}
+
+@media (max-width:359px) {
+  #topNav a.tn-menu-item, #topNav button.tn-menu-item {
+    font-size: 12px;
+    padding: 8px 8px;
+  }
+
+  .title-bar-title {
+    font-size: 14px;
+  }
+}
+
+.paletteDisplayWidget {
+  border: 1px solid black; 
+  display: inline-block;
+}
+
+.pdw-colours {
+  border: 1px solid white; 
+  display: inline-block; 
+  border-collapse: collapse;
+}
+
+.pdw-colour {
+  height: 50px; 
+  width: 50px; 
+  display: inline-block; 
+  float: left;
+}
+
+
+.lw-outer {
+  padding: 25px 0 25px;
+  background-color: #555555;
+  width: 80vw;
+  max-width: 400px;
+  min-width: 220px;
+  margin: 0 auto;
+  box-shadow: 3px 3px 15px;
+}
+
+.lw-inner {
+  max-width: 80%;
+  margin: 10px auto;
+}
+
+#lwLoginButton {
+  width: 100%;
+  margin: 25px 0;
+}
+
+.lw-logo {
+  width: 50vw;
+  height: 50vw;
+  max-width: 75px;
+  max-height: 75px;
+  margin: 0 auto 25px;
+}
+
+.lw-text {
+  color: white;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.cpw-outer {
+  padding: 25px 0 25px;
+  background-color: #999999;
+  width: 80vw;
+  max-width: 800px;
+  min-width: 220px;
+  margin: 0 auto;
+  box-shadow: 3px 3px 15px;
+}
+
+.cpw-inner {
+  max-width: 80%;
+  margin: 10px auto;
+}
+
+.cpw-button-cell {
+  border-radius: 1vw;
+  line-height: 8vw;
+  height: 8vw;
+  max-height: 80px;
+  margin: .1vw;
+}
+
+.cpw-button-cell:focus {
+  box-shadow: -2px 0 2px white, 0 -2px 2px white, 2px 0 2px white, 0 2px 2px white;
+}
+
+.cpw-button-cell:hover {
+  opacity: 0.7;
+}
+
+.cpw-colour-cell {
+  width: 20%;
+  height: calc(100vw * 0.8 * 0.8 * 0.2 - 1px);
+  max-height: calc(800px * 0.8 * 0.2 - 1px);
+}
+
+.cpw-ccell-text {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  line-height: 3.125vw;
+  text-align: center;
+}
+
+.cpw-ccell-lock {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 6.25vw;
+  text-align: center;
+  opacity: 0.3;
+}
+
+.grid-y {
+  width: 100%;
+  height: 100%;
+}
+
+.cpw-icon-button-group {
+  text-align: center;
+  min-width: 8vw;
+  max-width: 80px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cpw-icon {
+  font-size: 4vw;
+  line-height: 4vw;
+}
+
+.cpw-text {
+  font-size: 1.7vw;
+  line-height: 1.7vw;
+}
+
+@media (min-width:1000px) {
+  .cpw-outer {
+    width: 800px;
+  }
+
+  .cpw-button-cell {
+    border-radius: 10px;
+    line-height: 80px;
+    height: 80px;
+    margin: 1px;
+  }
+
+  .cpw-icon-button-group {
+    min-width: 80px;
+    max-width: 80px;
+  }
+
+  .cpw-icon {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .cpw-text {
+    font-size: 17px;
+    line-height: 17px;
+  }
+
+  .cpw-ccell-text {
+    line-height: 31.75px;
+  }
+
+  .cpw-ccell-lock {
+    line-height: 63.5px;
+  }
+}
+
+#cpwPaletteOptionsBar {
+  text-align: center;
+}
+
+.cpw-control-input {
+  margin: 8px 0;
+}
+
+label.cpw-control-label {
+  margin: 8px 0;
+}
+
+#cpwControlBar {
+  padding: 8px 0;
+}
+

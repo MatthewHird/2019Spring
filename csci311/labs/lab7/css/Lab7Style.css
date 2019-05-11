@@ -1,0 +1,14 @@
+/*  
+  author: Matthew Hird
+  csciId: hirdm
+  date: Feb 28, 2019
+  links: 
+*/
+
+ul.myNav li{
+    display: inline;
+    padding: 5px 20px;
+    background-color: lightgray;
+    border: 2px solid gray;
+    margin: 2px;
+}

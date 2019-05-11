@@ -1,0 +1,21 @@
+
+Lab 7
+=====
+
+The objective for this lab is to investigate data representation, type conversion,
+and type casting in C.
+
+The repository contains a collection of C programs: lab7a.c through lab7f.c.
+
+Compile each of the programs using the makefile (make all will compile all at once).
+
+Run each of the programs, storing the results in a matching .out file i.e.
+    ./lab7a > lab7a.out
+    ./lab7b > lab7b.out
+etc
+
+In the file answers.txt, for each program, provide a clear,
+intuitive explanation of its behaviour when executed.
+
+As always, be sure to add, commit, and push your completed lab.
+

@@ -1,0 +1,3 @@
+user_id FK (int),password_hash (text)
+0,$2y$10$OTRkODUzODQ1YzBlNTAzN.Cj97hzoPgoAa8mWpczVE5dJ./iufTEm
+1,$2y$10$NGEyMjE0YjEyMDc1ZGUzZ./PXZli.At6k/HRqtyf6IT24ScJWVyYa

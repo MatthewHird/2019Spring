@@ -1,0 +1,78 @@
+
+
+*** actionBarGenerator.php ***
+
+'1' => 'SELECT A.name FROM action_bar AB JOIN action A ON action_id = A.id WHERE ship_id = ?'
+
+
+*** maneuverDialtableGenerator.php ***
+
+'1' => 'SELECT size FROM ship WHERE id = ?',
+
+'2' => 'SELECT MD.speed, M.name, MD.difficulty FROM maneuver_dial MD JOIN maneuver M ON maneuver_id = M.id WHERE ship_id = ?',
+
+'3' => 'SELECT HD.speed, M.name, HD.energy FROM huge_maneuver_dial HD JOIN maneuver M ON maneuver_id = M.id WHERE ship_id = ?'
+
+
+*** pilotCardTableGenerator.php ***
+
+'1' => "SELECT P.name AS p_name, P.variant AS p_variant, UN.name AS u_name, UN.id AS u_id, P.pilot_skill, P.elite, P.point_cost, S.name AS s_name, S.variant AS s_variant, S.faction, S.id AS s_id FROM pilot P JOIN ship S ON P.ship_id = S.id JOIN unique_name UN ON P.u_name_id = UN.id WHERE P.id = ?"
+
+
+*** pilotListTableGenerator.php ***
+
+'1' => "SELECT id, name, variant, u_name_id, pilot_skill, elite, point_cost FROM pilot WHERE ship_id = ? ORDER BY CASE WHEN u_name_id = 0 THEN 0 ELSE 1 END DESC, pilot_skill DESC, point_cost DESC, name"
+
+
+*** shipInfoHeaderGenerator.php ***
+
+'1' => 'SELECT name, variant, faction, size FROM ship WHERE id = ?',
+
+'2' => 'SELECT F.name FROM firing_arc F JOIN ship_firing_arc S ON F.id = S.firing_arc_id WHERE S.ship_id = ?'
+
+
+*** shipStatsTableGenerator.php ***
+
+'1' => 'SELECT size FROM ship WHERE id = ?',
+
+'2' => 'SELECT attack, agility, hull, shield FROM ship WHERE id = ?',
+
+'3' => 'SELECT S.attack, HS.energy, S.agility, S.hull, S.shield FROM ship S JOIN huge_ship HS ON S.id = ship_id WHERE S.id = ?'
+
+
+*** upgradeBarGenerator.php ***
+
+'1' => 'SELECT U.name  FROM upgrade_bar UB JOIN upgrade U ON upgrade_id = U.id WHERE ship_id = ? ORDER BY position DESC'
+
+
+*** addProductHandler.php ***
+
+'1' => "INSERT INTO ship (id, name, variant, faction, size, attack, agility, hull, shield) SELECT MAX(S.id + 1), :na, :va, :fa, :si, :at, :ag, :hu, :sh FROM ship S",
+
+'2' => "INSERT INTO huge_ship (ship_id, energy) SELECT S.id, :en FROM ship S WHERE S.name = :na AND S.variant = :va",
+
+'3' => "SELECT id FROM ship WHERE name = :xna and variant = :xva",
+
+'4' => "SELECT id FROM unique_name WHERE name = :xun",
+
+'5' => "INSERT INTO unique_name (id, name) SELECT MAX(UN.id + 1), :un FROM unique_name UN",
+
+'6' => "INSERT INTO pilot (id, name, variant, u_name_id, ship_id, pilot_skill, elite, point_cost) SELECT MAX(P.id + 1), :na, :va, :uid, :sid, :ps, :el, :pc FROM pilot P"
+
+
+*** pilotPage.php ***
+
+'1' => "SELECT name, variant FROM pilot WHERE id = ?"
+
+
+*** shipPage.php ***
+
+'1' => "SELECT name, variant FROM ship WHERE id = ?"
+
+
+*** searchPage.php ***
+
+'1' => "SELECT S.id AS s_id, S.name AS s_name, S.variant AS s_variant, S.faction AS s_faction FROM ship S",
+
+'2' => "SELECT P.id AS p_id, P.name AS p_name, P.variant AS p_variant, S.id AS s_id, S.name AS s_name, S.variant AS s_variant, S.faction AS s_faction FROM ship S JOIN pilot P ON S.id = P.ship_id"
+

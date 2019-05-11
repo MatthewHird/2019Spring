@@ -1,0 +1,3 @@
+user_id (int),username (tinytext),account_type_idFK (tinyint(1))
+0,hirdm,1
+1,testman,0

@@ -1,0 +1,71 @@
+CSCI 330 - Lab7
+
+Part A
+
+    Both <int> and <unsigned int> take up 32 bits of memory. The max value for 
+<unsigned int> is represented by all 1s in binary. The (signed) <int> is in 2s 
+complement form, meaning a 1 in the first bit denotes a negative value. To 
+convert negative values in 2s complement you "flip all the bits, add 1, then 
+add the negative sign", meaning in this case you flip all the bits to get zero,
+add 1 to get 1, then make negative to get -1.
+
+
+Part B
+
+    Both <int> and <float> take up 32 bits of memory. <int> is represented in
+32 bit 2s complement format, while <float> is represented in IEEE 754 single 
+precision (binary32) binary floating-point format. From left to right, the float
+has 1 bit representing sign (0 for positive, 1 for negative), 8 bits for the 
+exponent (this 8 bit value minus 127 equals exponent value), and 23 bits for the
+fractional part (concatenate "1." with the fractional part). 
+    
+    In the first example, the int is set to 3. When read as a float, the 
+exponent part is 0 (represents 2^-127) and the fractional part is 21 0s 
+followed by "11" (represents binary 1.00000000000000000000011) to get
+binary 1.00000000000000000000011 * 2^-127 = decimal 4.2039 * 10^-45. 
+
+    In the second example, the float is set to 3, which is encoded to
+0 10000000 10000000000000000000000 (representing binary 1.1 * 2^1). When read 
+as an int, this comes out to decimal 1077936128.
+
+
+Part C
+
+    Decimal 0.1 cannot be perfectly represented in binary because 10 has the
+prime roots 2 and 5, while 2 only has the prime root of 2. This means the double
+representation of 0.1 has a small rounding error when it is stored. When it is
+summed together in the loop, it never perfectly equals 1, as the rounding error
+if summed 10 times, so the value is a tiny bit over 1, so the loop continues 
+past 10 cycles. Eventually it breaks after 15 cycles as the sum exceeds 1.5 .  
+
+
+Part D
+
+    INT_MAX / 64 = 33554431.9844, which get truncated to 33554431 when assigned
+to i. In binary, i = 1111111111111111111111111, which is 25 1s, which is also
+1.111111111111111111111111 * 2^24. When converted to a float, the fractional
+section only has 23 bits, meaning we can only have 24 bits of precision, so the
+final 1 is rounded up, making the float encoding 
+1.00000000000000000000000 * 2^25. When it is converted back to an int,
+j = 33554432.
+
+
+Part E
+
+    The <int> variables x and y are stored in 32 bit 2s complement form, 
+described earlier. To get -3, take 3 (binary 00000000000000000000000000000011),
+substract 1 (binary 00000000000000000000000000000010), then flip all the bits
+(binary 11111111111111111111111111111101). These bits are then read as ungined 
+hex values. To convert binary to hex, we can group sets of 4 binary digits to 
+1 hex digit (1111 1111 1111 1111 1111 1111 1111 1101 => F F F F F F F D). Going 
+from int 3 (binary 00000000000000000000000000000011) to hex we get
+(0000 0000 0000 0000 0000 0000 0000 0011 => 0 0 0 0 0 0 0 3 = 3).
+
+
+Part F
+
+    In c, <char> values are stored as <int> values. The ascii <char> '1' is 
+    stored as the <int> value 49. Using "%c" in a printf statement displays the 
+    <char> representation of a value, so ch is displayed as "1". Using "%d" in
+    a printf statement displays the decimal <int> representation of a value, so
+    ch is displayed as "49". 

@@ -1,0 +1,45 @@
+
+README Lab 11
+=============
+
+This lab focuses on the use of "smart" pointers in C++ through
+the use of the tr1 library's shared_ptr and weak_ptr.
+
+Supplied files:
+---------------
+
+node.h: contains the definition of a node class for use in
+   a linked list, where the data in each node consists
+   of a pair of strings, and the pointers between nodes
+   are "smart" pointers.  It also defines two data types,
+   nodePtr and wnodePtr, which are simply shorthand for
+   the full definition of shared_ptr<node> and weak_ptr<node>.
+
+node.cpp: contains the implementation of all the node
+   methods provided in lab11.h
+
+list.h: contains the prototypes for a set of linked list
+   functions using the node class:
+    - insert: inserts a new node at the front of a list
+    - remove: removes the front node
+    - print: prints the entire list
+    - deallocate: deletes the entire list
+
+list.cpp: contains skeletal implementations of the
+   four functions from list.h
+
+tester.cpp: provides a main routine that uses the four
+   functions from list.h on a small list.
+
+makefile: to compile the above into executable lab11x
+
+Task:
+-----
+Your task is to implement the four list.cpp functions exactly as
+specified in the list.h file.  Do not alter node.h, node.cpp, or list.h.
+
+You are encouraged to expand on the testing of the list functions from
+within your tester.cpp, but remember your lab will be graded solely on
+the correctness of your list.cpp implementation - i.e. it must work with
+the instructor's node.h, node.cpp, list.h and tester.cpp.
+

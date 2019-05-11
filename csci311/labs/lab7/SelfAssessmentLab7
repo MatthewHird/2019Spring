@@ -1,0 +1,34 @@
+Specifications:
+
+• Clear the word from the div when a button is pressed
+    I made it clear the words and reset the style in the div when the button is
+    clicked. It was unclear from the video or document whether the style was also 
+    supposed to be reset. 
+• Skew the div, and transition the colours when a button is pressed
+    In the video, the text colour changed when the first colour was selected, so
+    I made it so in mine the div backgound colour changes when the first colour
+    is selected. Then when the button is pressed, it transitions to the second 
+    colour.
+• Skew degrees: use javascript to verify the value is within range when 
+  the button, below is pressed.
+    I set the min and max values on the input, so the up and down buttons won't
+    go outside the range, but the user can still type in values outside of the 
+    min and max ranges. I do have Javascript that validates the values are 
+    within range when the "Transform Text" button is pressed.
+
+Additional HTML Page:
+
+    I took an object oriented approach to my JavaScript, and built the transformer
+form+functions as a class. The class constructor takes in 2 parameters, the form's
+id value and the text display box's id value, and uses CSS selectors to determine
+the IDs of different elements throughout the form. The selectors us the form ID,
+followed by a class selector, followed by the element type to determine certain
+elements' IDs (e.g. "#formId .imageDisplay img" to get the list of image elements
+to be displayed). 
+
+    This means I could put multiple independent transformation forms 
+that don't interfer with each other on a single HTML page without writing any 
+additional JavaScript (except a second constructor call) and without hard coding
+any ID's in the JavaScript script. Just as a proof of concept to my self, I tested
+and have included an extra HTML page with 2 independently functioning transformation
+forms. 

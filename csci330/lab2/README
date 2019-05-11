@@ -1,0 +1,49 @@
+
+This README provides the specifications for the lab 2 take home exercise
+
+Lab requirements:
+-----------------
+
+In file lab2a.cl, define a function named combine.  The function
+       must expect three parameters, f, g, and h.
+    If both f and g are functions, then combine computes and
+       returns (f (g h)) - you may use funcall, eval, or apply,
+       whichever seems the most appropriate.
+    If f is a function and g isn't, then combine computes and
+       returns (f g h) - again using funcall, eval, or apply
+       as appropriate.
+    If g is a function and f isn't, then combine computes and
+       returns (g f h) - again using funcall, eval, or apply.
+    If neither f nor g are functions then combine simply
+       returns the value 'NOTFUNCTIONS
+
+Testing requirements
+--------------------
+As with past weeks, your lab2b.cl will be a script used to test
+   the function in your lab2a.cl.  It must load lab2a.cl, and
+   then run at least four test cases as described below.
+
+As always, make sure your functions are named correctly (correct spelling,
+   correct case) and that they RETURN the expected value (having the
+   function simply display the value is not an acceptable substitute).
+
+The lab2b.cl file must contain at least four test cases,
+   one illustrating each of the four combinations below using appropriate
+   function calls
+     - one where f and g are both functions, each expecting one parameter,
+       and where the return type of g is appropriate as a parameter for f
+     - one where f is a function but g isn't, and f expects two parameters
+       (and g, h are appropriate types for f)
+     - one where g is a function but f isn't, and g expects two parameters
+       (and f, h are appropriate types for g)
+     - one where neither f nor g is a function
+
+Submitting
+----------
+Make sure you have added, committed, and pushed your completed work, e.g.
+
+   git add lab2a.cl
+   git add lab2b.cl
+   git commit -m "lab 2 complete"
+   git push
+

@@ -1,0 +1,64 @@
+
+This README provides the specifications for the lab 4 take home exercise
+
+Lab requirements:
+-----------------
+
+The objective for this week's lab is to implement the a circle "object"
+using let over lambda (with labels), and an overlaps function that
+operates on two circles.
+
+In this case, your lab4a.cl file should contain just the definition of
+the circle "constructor", and the  definition of the overlaps function.
+Your lab4a.cl can be loaded and run using the lab4b.cl script provided.
+
+
+The circle "constructor"
+------------------------
+Following the let over lambda (labels) structure we have discussed in
+lectures and the lab session, complete the circle definition, providing
+support for the following:
+
+   - a default circle has x,y values of 0,0 and radius of 1, e.g. if defined using
+       (defvar c (circle))
+
+   - custom values can be set for a circle's x,y,radius (in that order) at creation, e.g.
+       (defvar c (circle 1 2 3))
+     error handling: all values must be numeric, and radius must be greater than 0,
+       the default values are used in place of any invalid values passed
+
+   - getx, gety, getr commands are supported to look up the current value
+       of x, y, and radius for a circle, e.g.
+       (setf result (funcall c 'getx))
+
+   - setx, sety, setr commands are supported to change the current value
+       of x, y, and radius for a circle, e.g.
+       (funcall c 'setx 10)
+     error handling: does not change the value of x/y/r if passed an invalid value
+
+   - dispatcher: generates an error message if an invalid command is passed, e.g.
+        (funcall c 'foo 10)
+
+The overlap function
+--------------------
+This function expects two circles as parameters, and returns true if they
+touch or overlap, false otherwise.  The algorithm to be used is as follows:
+   if (x1 + r1 + r2) < x2 return false
+   if (x2 + r1 + r2) < x1 return false
+   if (y1 + r1 + r2) < y2 return false
+   if (y2 + r1 + r2) < y1 return false
+   compute the distance between the two centres:
+      dist = sqrt((x2-x1)^2 + (y2-y1)^2)
+   if dist > (r1 + r2) return false
+   return true
+
+The function returns false if passed invalid parameters.
+
+Submitting
+----------
+Make sure you have added, committed, and pushed your completed work, e.g.
+
+   git add lab4a.cl
+   git commit -m "lab 4 complete"
+   git push
+

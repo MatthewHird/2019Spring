@@ -1,0 +1,50 @@
+
+README Lab 10
+-------------
+
+In this lab we'll work with templated function pointers in C++.
+
+Files provided in the repository:
+---------------------------------
+
+A makefile, and three C++ files: lab10.h, lab10.cpp, tester.cpp
+
+In files lab10.h and lab10.cpp you're given the prototype and
+definition of a templated function (ssort) to sort an array,
+along with a templated swap function.  The lab10.cpp file also
+includes an explicit instantiation of the ssort function, defined
+for an array of floats.
+
+The tester.cpp file contains a main routine that calls ssort on
+an array of floats, and prints the result.  It also includes the
+definition of a function (comp) to compare two float values,
+but that function is not yet used in the program.
+
+A makefile is included to compile the code into executable lab10x.
+
+Lab task:
+---------
+
+Currently, the implementation of ssort assumes the < operator works
+whatever data type is being used.  Your task is to modify the ssort
+function prototype and definition in lab10.h and lab10.cpp so that it
+expects a third parameter, which will be a templated function pointer
+for a comparison function (like comp from tester.cpp) that will be used
+in the sorting instead of the < operator in the statement
+   if (arr[j] < min) {
+
+The main routine will also need to be modified to pass the
+additional parameter, i.e. the call in main will look like
+
+   ssort(data, size, comp);
+
+You must update the .h and both .cpp files to define, instantiate,
+and call the new ssort function appropriately and to use the passed
+parameter within ssort.
+
+The basic organization of the three files must not be changed, i.e.
+ - the .h file contains the swap and the prototype for ssort,
+ - the lab10.cpp file contains the definition and instantiation of ssort,
+ - the main routine contains the definition of comp and the call to ssort.
+If you change this basic structure then your lab mark will be 0.
+

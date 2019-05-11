@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- 
+  author: Matthew Hird
+  csciId: hirdm
+  date: Jan 21, 2019
+  links: 
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>PHP Form Processing - Matt's Lab 5</title>
+    <link rel="stylesheet" type="text/css" href="./lab5Styles.css">
+      <!-- other head stuff -->
+  </head>
+  <body> 
+    <header>
+      <h1>Lab 5 - PHP Form Processing</h1>
+    </header>
+    <div id="main">
+      <div class="myNavBar">
+      <ul class="myNav">
+        <li class="pagelink"><a href="./index.html">Home</a></li>
+        <li class="pagelink"><a href="./Lab5.html">Lab 5 html</a></li>
+        <li class="pagelink"><a href="./Lab5.php">Lab 5 php</a></li>
+        <li class="pagelink"><a class="active" href="./lab5Form.html">PHP Form</a></li>
+      </ul>
+      </div><!--end myNavBar-->
+      <div class="content">
+        <h2>The most formal of forms</h2>
+
+        <form action="lab5ProcessForm.php" method="POST">
+          <div class="inputRow">
+            <label for="name" class="myLabel">Your Name</label>
+            <input class="myInput" type="text" id="name" name="name" />
+          </div>
+          <div class="inputRow">
+            <label for="animal1" class="myLabel">Animal One</label>
+            <input class="myInput" type="text" id="animal1" name="animal1" placeholder="First Animal" />
+          </div>
+          <div class="inputRow">
+            <label for="animal2" class="myLabel">Animal Two</label>
+            <input class="myInput" type="text" id="animal2" name="animal2" placeholder="Second Animal" />
+          </div>
+          <div class="inputRow">
+            <label for="element" class="myLabel">Creature Element</label>
+            <select class="myInput mySelect" id="element" name="element" size="1">
+              <option value="Fire"  selected="selected">Fire</option>
+              <option value="Water">Water</option>
+              <option value="Air">Air</option>
+              <option value="Earth">Earth</option>
+            </select>
+          </div>
+          <div class="inputRow">
+            <label for="colour" class="myLabel">Colour</label>
+            <input class="myInput" type="color" id="colour" name="colour"/>
+          </div>
+          <input class="myInput" type="submit" name="go" value="Create!"/>
+        </form>
+
+      </div>
+    </div>
+    <footer>
+      <small>Copyright &copy; Matthew Hird, 2019</small>
+    </footer>
+  </body>
+</html>

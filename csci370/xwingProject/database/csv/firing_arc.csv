@@ -1,0 +1,11 @@
+id,name,primary_attack,description
+1,Primary Firing Arc Only,1,Describe Primary Firing Arc Only
+2,Turret Primary Weapon,1,Describe Turret Primary Weapon
+3,Rear-facing Auxiliary Firing Arc,1,Describe Rear-facing Auxiliary Firing Arc
+4,Rear-facing Special Firing Arc,0,Describe Rear-facing Special Firing Arc
+5,180 Degree Auxiliary Firing Arc,1,Describe 180 Degree Auxiliary Firing Arc
+6,Mobile Firing Arc,1,Describe Mobile Firing Arc
+7,Bullseye Firing Arc,1,Describe Bullseye Firing Arc
+8,Forward Firing Arc,1,Describe Forward Firing Arc
+9,90 Degree Side Firing Arcs,0,Describe 90 Degree Side Firing Arcs
+10,Extended Side Firing Arcs,0,Describe Extended Side Firing Arcs

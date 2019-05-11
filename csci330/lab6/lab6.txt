@@ -1,0 +1,34 @@
+*** state/global ***
+
+GlobalConst: 0x55983b47aa14
+GlobalVar: 0x55983b67b040
+staticVar: 0x55983b67b044
+
+All global and static variables appear in the state/global memory area.
+
+
+*** heap ***
+
+malloc ptr: 0x55983cfb5010
+
+The heap seems to be right after the state and global vars. It contains pointers
+
+
+*** runtime stack ***
+
+mainVar: 0x7fff37ebc3ac
+mainConst: 0x7fff37ebc3a8
+
+argc: 0x7fff37ebc39c
+argv: 0x7fff37ebc390
+
+localVar: 0x7fff37ebc374
+localConst: 0x7fff37ebc370
+
+loopVar: 0x7fff37ebc36c
+loopConst: 0x7fff37ebc368
+
+All nonstatic namespace specific vars (including argc and argv) are put on the
+runtime stack. The start of the stack seems to be arbitrarily assigned by the
+compiler, and is at the bottom of the program. As the stack builds up, 
+the memory addresses count downwards.

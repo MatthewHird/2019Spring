@@ -1,0 +1,18 @@
+id,name,description
+1,Turn Left,Describe Turn Left
+2,Bank Left,Describe Bank Left
+3,Straight,Describe Straight
+4,Bank Right,Describe Bank Right
+5,Turn Right,Describe Turn Right
+6,Koiogran Turn,Describe Koiogran Turn
+7,Segnors Loop Left,Describe Segnors Loop Left
+8,Segnors Loop Right,Describe Segnors Loop Right
+9,Tallon Roll Left,Describe Tallon Roll Left
+10,Tallon Roll Right,Describe Tallon Roll Right
+11,Stationary,Describe Stationary
+12,Reverse Straight,Describe Reverse Straight
+13,Reverse Bank Left,Describe Reverse Bank Left
+14,Reverse Bank Right,Describe Reverse Bank Right
+15,Huge Turn Left,Describe Huge Turn Left
+16,Huge Straight,Describe Huge Straight
+17,Huge Turn Right,Describe Huge Turn Right

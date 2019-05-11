@@ -1,0 +1,263 @@
+.barrel-roll-b-50,
+.blank-b-50,
+.boost-b-50,
+.cloak-b-50,
+.coordinate-b-50,
+.evade-b-50,
+.focus-b-50,
+.jam-b-50,
+.recover-b-50,
+.reinforce-b-50,
+.reload-b-50,
+.rotate-arc-b-50,
+.slam-b-50,
+.target-lock-b-50,
+.bar-b,
+.blank-50,
+.boo-b,
+.clo-b,
+.coo-b,
+.eva-b,
+.foc-b,
+.jam-b,
+.rec-b,
+.rei-b,
+.rel-b,
+.rot-b,
+.sla-b,
+.tar-b
+{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.bank-left-g-30,
+.bank-left-r-30,
+.bank-left-w-30,
+.bank-right-g-30,
+.bank-right-r-30,
+.bank-right-w-30,
+.blank-icon-30,
+.k-turn-r-30,
+.k-turn-w-30,
+.reverse-bank-left-r-30,
+.reverse-bank-right-r-30,
+.reverse-straight-move-r-30,
+.s-loop-left-r-30,
+.s-loop-left-w-30,
+.s-loop-right-r-30,
+.speed-five-30,
+.speed-four-30,
+.speed-one-30,
+.speed-three-30,
+.speed-two-30,
+.speed-zero-30,
+.stationary-r-30,
+.straight-move-g-30,
+.straight-move-r-30,
+.straight-move-w-30,
+.t-roll-left-r-30,
+.t-roll-right-r-30,
+.turn-left-g-30,
+.turn-left-r-30,
+.turn-left-w-30,
+.turn-right-g-30,
+.turn-right-r-30,
+.turn-right-w-30,
+.b-l-g,
+.b-l-r,
+.b-l-w,
+.b-r-g,
+.b-r-r,
+.b-r-w,
+.blank-30,
+.kt-r,
+.kt-w,
+.rb-l-r,
+.rb-r-r,
+.rsm-r,
+.sl-l-r,
+.sl-l-w,
+.sl-r-r,
+.sp-5,
+.sp-4,
+.sp-1,
+.sp-3,
+.sp-2,
+.sp-0,
+.sta-r,
+.sm-g,
+.sm-r,
+.sm-w,
+.tr-l-r,
+.tr-r-r,
+.t-l-g,
+.t-l-r,
+.t-l-w,
+.t-r-g,
+.t-r-r,
+.t-r-w
+{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.astromech-black-30,
+.astromech-white-30,
+.bomb-black-30,
+.bomb-white-30,
+.cannon-black-30,
+.cannon-white-30,
+.cargo-black-30,
+.cargo-white-30,
+.crew-black-30,
+.crew-white-30,
+.elite-black-30,
+.elite-white-30,
+.hardpoint-black-30,
+.hardpoint-white-30,
+.illicit-black-30,
+.illicit-white-30,
+.missile-black-30,
+.missile-white-30,
+.modification-black-30,
+.modification-white-30,
+.salvaged-astromech-black-30,
+.salvaged-astromech-white-30,
+.system-black-30,
+.system-white-30,
+.team-black-30,
+.team-white-30,
+.tech-black-30,
+.tech-white-30,
+.title-black-30,
+.title-white-30,
+.torpedo-black-30,
+.torpedo-white-30,
+.turret-black-30,
+.turret-white-30,
+.ast-b,
+.ast-w,
+.bom-b,
+.bom-w,
+.can-b,
+.can-w,
+.car-b,
+.car-w,
+.cre-b,
+.cre-w,
+.eli-b,
+.eli-w,
+.har-b,
+.har-w,
+.ill-b,
+.ill-w,
+.mis-b,
+.mis-w,
+.mod-b,
+.mod-w,
+.sal-b,
+.sal-w,
+.sys-b,
+.sys-w,
+.tea-b,
+.tea-w,
+.tec-b,
+.tec-w,
+.tit-b,
+.tit-w,
+.tor-b,
+.tor-w,
+.tur-b,
+.tur-w
+{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.bar-b, .barrel-roll-b-50 {background: url(../img/actionSpriteBlack50x50.png) 0 0;}
+.blank-50, .blank-b-50 {background: url(../img/actionSpriteBlack50x50.png) -50px 0;}
+.boo-b, .boost-b-50 {background: url(../img/actionSpriteBlack50x50.png) -100px 0;}
+.clo-b, .cloak-b-50 {background: url(../img/actionSpriteBlack50x50.png) -150px 0;}
+.coo-b, .coordinate-b-50 {background: url(../img/actionSpriteBlack50x50.png) -200px 0;}
+.eva-b, .evade-b-50 {background: url(../img/actionSpriteBlack50x50.png) -250px 0;}
+.foc-b, .focus-b-50 {background: url(../img/actionSpriteBlack50x50.png) -300px 0;}
+.jam-b, .jam-b-50 {background: url(../img/actionSpriteBlack50x50.png) -350px 0;}
+.rec-b, .recover-b-50 {background: url(../img/actionSpriteBlack50x50.png) -400px 0;}
+.rei-b, .reinforce-b-50 {background: url(../img/actionSpriteBlack50x50.png) -450px 0;}
+.rel-b, .reload-b-50 {background: url(../img/actionSpriteBlack50x50.png) -500px 0;}
+.rot-b, .rotate-arc-b-50 {background: url(../img/actionSpriteBlack50x50.png) -550px 0;}
+.sla-b, .slam-b-50 {background: url(../img/actionSpriteBlack50x50.png) -600px 0;}
+.tar-b, .target-lock-b-50 {background: url(../img/actionSpriteBlack50x50.png) -650px 0;}
+
+.b-l-g, .bank-left-g-30 {background: url(../img/maneuverSprite30x30.png) 0 0;}
+.b-l-r, .bank-left-r-30 {background: url(../img/maneuverSprite30x30.png) -30px 0;}
+.b-l-w, .bank-left-w-30 {background: url(../img/maneuverSprite30x30.png) -60px 0;}
+.b-r-g, .bank-right-g-30 {background: url(../img/maneuverSprite30x30.png) -90px 0;}
+.b-r-r, .bank-right-r-30 {background: url(../img/maneuverSprite30x30.png) -120px 0;}
+.b-r-w, .bank-right-w-30 {background: url(../img/maneuverSprite30x30.png) -150px 0;}
+.blank-30, .blank-icon-30 {background: url(../img/maneuverSprite30x30.png) -180px 0;}
+.kt-r, .k-turn-r-30 {background: url(../img/maneuverSprite30x30.png) -210px 0;}
+.kt-w, .k-turn-w-30 {background: url(../img/maneuverSprite30x30.png) -240px 0;}
+.rb-l-r, .reverse-bank-left-r-30 {background: url(../img/maneuverSprite30x30.png) -270px 0;}
+.rb-r-r, .reverse-bank-right-r-30 {background: url(../img/maneuverSprite30x30.png) -300px 0;}
+.rsm-r, .reverse-straight-move-r-30 {background: url(../img/maneuverSprite30x30.png) -330px 0;}
+.sl-l-r, .s-loop-left-r-30 {background: url(../img/maneuverSprite30x30.png) -360px 0;}
+.sl-l-w, .s-loop-left-w-30 {background: url(../img/maneuverSprite30x30.png) -390px 0;}
+.sl-r-r, .s-loop-right-r-30 {background: url(../img/maneuverSprite30x30.png) -420px 0;}
+.sp-5, .speed-five-30 {background: url(../img/maneuverSprite30x30.png) -450px 0;}
+.sp-4, .speed-four-30 {background: url(../img/maneuverSprite30x30.png) -480px 0;}
+.sp-1, .speed-one-30 {background: url(../img/maneuverSprite30x30.png) -510px 0;}
+.sp-3, .speed-three-30 {background: url(../img/maneuverSprite30x30.png) -540px 0;}
+.sp-2, .speed-two-30 {background: url(../img/maneuverSprite30x30.png) -570px 0;}
+.sp-0, .speed-zero-30 {background: url(../img/maneuverSprite30x30.png) -600px 0;}
+.sta-r, .stationary-r-30 {background: url(../img/maneuverSprite30x30.png) -630px 0;}
+.sm-g, .straight-move-g-30 {background: url(../img/maneuverSprite30x30.png) -660px 0;}
+.sm-r, .straight-move-r-30 {background: url(../img/maneuverSprite30x30.png) -690px 0;}
+.sm-w, .straight-move-w-30 {background: url(../img/maneuverSprite30x30.png) -720px 0;}
+.tr-l-r, .t-roll-left-r-30 {background: url(../img/maneuverSprite30x30.png) -750px 0;}
+.tr-r-r, .t-roll-right-r-30 {background: url(../img/maneuverSprite30x30.png) -780px 0;}
+.t-l-g, .turn-left-g-30 {background: url(../img/maneuverSprite30x30.png) -810px 0;}
+.t-l-r, .turn-left-r-30 {background: url(../img/maneuverSprite30x30.png) -840px 0;}
+.t-l-w, .turn-left-w-30 {background: url(../img/maneuverSprite30x30.png) -870px 0;}
+.t-r-g, .turn-right-g-30 {background: url(../img/maneuverSprite30x30.png) -900px 0;}
+.t-r-r, .turn-right-r-30 {background: url(../img/maneuverSprite30x30.png) -930px 0;}
+.t-r-w, .turn-right-w-30 {background: url(../img/maneuverSprite30x30.png) -960px 0;}
+
+.ast-b, .astromech-black-30 {background: url(../img/upgradeSprite30x30.png) 0 0;}
+.ast-w, .astromech-white-30 {background: url(../img/upgradeSprite30x30.png) -30px 0;}
+.bom-b, .bomb-black-30 {background: url(../img/upgradeSprite30x30.png) -60px 0;}
+.bom-w, .bomb-white-30 {background: url(../img/upgradeSprite30x30.png) -90px 0;}
+.can-b, .cannon-black-30 {background: url(../img/upgradeSprite30x30.png) -120px 0;}
+.can-w, .cannon-white-30 {background: url(../img/upgradeSprite30x30.png) -150px 0;}
+.car-b, .cargo-black-30 {background: url(../img/upgradeSprite30x30.png) -180px 0;}
+.car-w, .cargo-white-30 {background: url(../img/upgradeSprite30x30.png) -210px 0;}
+.cre-b, .crew-black-30 {background: url(../img/upgradeSprite30x30.png) -240px 0;}
+.cre-w, .crew-white-30 {background: url(../img/upgradeSprite30x30.png) -270px 0;}
+.eli-b, .elite-black-30 {background: url(../img/upgradeSprite30x30.png) -300px 0;}
+.eli-w, .elite-white-30 {background: url(../img/upgradeSprite30x30.png) -330px 0;}
+.har-b, .hardpoint-black-30 {background: url(../img/upgradeSprite30x30.png) -360px 0;}
+.har-w, .hardpoint-white-30 {background: url(../img/upgradeSprite30x30.png) -390px 0;}
+.ill-b, .illicit-black-30 {background: url(../img/upgradeSprite30x30.png) -420px 0;}
+.ill-w, .illicit-white-30 {background: url(../img/upgradeSprite30x30.png) -450px 0;}
+.mis-b, .missile-black-30 {background: url(../img/upgradeSprite30x30.png) -480px 0;}
+.mis-w, .missile-white-30 {background: url(../img/upgradeSprite30x30.png) -510px 0;}
+.mod-b, .modification-black-30 {background: url(../img/upgradeSprite30x30.png) -540px 0;}
+.mod-w, .modification-white-30 {background: url(../img/upgradeSprite30x30.png) -570px 0;}
+.sal-b, .salvaged-astromech-black-30 {background: url(../img/upgradeSprite30x30.png) -600px 0;}
+.sal-w, .salvaged-astromech-white-30 {background: url(../img/upgradeSprite30x30.png) -630px 0;}
+.sys-b, .system-black-30 {background: url(../img/upgradeSprite30x30.png) -660px 0;}
+.sys-w, .system-white-30 {background: url(../img/upgradeSprite30x30.png) -690px 0;}
+.tea-b, .team-black-30 {background: url(../img/upgradeSprite30x30.png) -720px 0;}
+.tea-w, .team-white-30 {background: url(../img/upgradeSprite30x30.png) -750px 0;}
+.tec-b, .tech-black-30 {background: url(../img/upgradeSprite30x30.png) -780px 0;}
+.tec-w, .tech-white-30 {background: url(../img/upgradeSprite30x30.png) -810px 0;}
+.tit-b, .title-black-30 {background: url(../img/upgradeSprite30x30.png) -840px 0;}
+.tit-w, .title-white-30 {background: url(../img/upgradeSprite30x30.png) -870px 0;}
+.tor-b, .torpedo-black-30 {background: url(../img/upgradeSprite30x30.png) -900px 0;}
+.tor-w, .torpedo-white-30 {background: url(../img/upgradeSprite30x30.png) -930px 0;}
+.tur-b, .turret-black-30 {background: url(../img/upgradeSprite30x30.png) -960px 0;}
+.tur-w, .turret-white-30 {background: url(../img/upgradeSprite30x30.png) -990px 0;}

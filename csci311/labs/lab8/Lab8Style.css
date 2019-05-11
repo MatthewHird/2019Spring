@@ -1,0 +1,37 @@
+/*  
+  author: Matthew Hird
+  csciId: hirdm
+  date: Mar 6, 2019
+  links:
+*/ 
+div.myTable {
+  display: table;
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+}
+
+div.myHeaderRow {
+  display: table-row;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+div.myRow {
+  display: table-row;
+  background-color: lightgray;
+}
+
+div.myRow.oddRow {
+  background-color: gray;
+}
+
+span.myCell {
+  display: table-cell;
+  vertical-align: middle;
+  border: 1px solid black;
+  padding: 6px;
+  width: auto;
+  text-align: center;
+}

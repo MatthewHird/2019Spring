@@ -1,0 +1,4 @@
+account_type_id FK (tinyint(1)),permission_id FK (tinyint(1))
+0,0
+1,0
+1,1

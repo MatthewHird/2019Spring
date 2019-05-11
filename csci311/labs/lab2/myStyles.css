@@ -1,0 +1,65 @@
+/*  
+  author: Matthew Hird
+  csciId: hirdm
+  date: Jan 11, 2019
+  links:
+*/ 
+
+header, footer {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+header h1 {
+    text-shadow: 2px 2px 2px;
+}
+
+body {
+    background-color: #eddede;
+    padding: 0px 10px;
+}
+
+ul.myNav li {
+    display: inline;
+    padding: 5px 20px;
+    background-color: lightgray;
+    border: 2px solid gray;
+    margin: 2px;
+}
+
+h2 {
+    text-decoration: overline gray dashed;
+}
+
+ol li a:visited {
+    color: red;
+}
+
+ol li a:hover {
+    font-weight: bold;
+    color: black;
+}
+
+.classy {
+    text-align: right;
+    font-family: cursive, sans-serif;
+    background-color: #6da34e
+}
+
+h3 + p {
+    background-color: red;
+}
+
+img {
+    cursor: progress;
+}
+
+#catz {
+    border: 1px solid black;
+    padding-top: 10px;
+    margin-bottom: 40px;
+}
+h2 {
+    font-size: 20pt;
+}

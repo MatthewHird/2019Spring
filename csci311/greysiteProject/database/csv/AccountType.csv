@@ -1,0 +1,3 @@
+account_type_id (tinyint(1)),account_type_name (tinytext)
+0,GreyBasic
+1,GreyPlus

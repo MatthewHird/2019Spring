@@ -1,0 +1,27 @@
+
+Lab 6
+=====
+
+The objective for this lab is to investigate variable scopes in C.
+
+One way to narrow down the scope of variables, parameters, and constants
+is to identify where they are stored in memory
+ - locals typically exist in the stack frame for the current function
+ - globals typically exist in the stack space set aside for global variables
+ - dynamically created items typically exist in the memory space set aside for the heap
+
+Your task for this lab is
+(i)   Alter the program lab6.c to display the memory address of each and every
+      constant, variable, and parameter as it runs.  Make sure it also prints
+      the address of the memory allocated on the heap (i.e. the address stored
+      in the ptr).
+
+(ii)  Compile the program using gcc (not g++), run the program and store the
+      results in a file named results.txt
+
+(iii) Provide a written analysis, in file lab6.txt, summarizing which types of
+      value appear in which memory areas.  If you notice some areas of memory
+      appear to be divided into subsections then make a note of those as well.
+
+As always, be sure to add, commit, and push your solution.
+

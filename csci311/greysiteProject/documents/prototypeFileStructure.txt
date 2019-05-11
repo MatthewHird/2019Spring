@@ -1,0 +1,17 @@
+public_html/
+    css/
+    img/
+    js/
+    index.php
+resources/
+    lib/
+    templates/
+    config.php
+
+    The public_html directory with contain the publicly accessible web pages 
+(HTML/PHP). css/ contains CSS stylesheets. img/ contains images. js/ contains 
+JavaScript files. index.php will be the root page of the web site. lib/ contains
+any personal or third party libraries (if necessary). templates/ will contain 
+any PHP files that will be used on multiple pages (header.php, footer.php, 
+sidepanel.php, etc.). config.php will contain database credentials, path aliases
+and other side wide settings.

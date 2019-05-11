@@ -1,0 +1,23 @@
+
+This README provides the specifications for the lab 5 exercise on macros.
+
+Lab requirements:
+-----------------
+
+The objective for this week's lab is to improve the timer macro provided in lab5.cl.
+
+Currently, the macro uses three hard-coded local variables to store the start time,
+end time, and result of the command being run.  If those names are already in use
+in the same scope as the macro call, then significant problems may arise.
+
+Modify the macro so that it uses gensym to generate the names of the local variables
+instead of hardcoding them.
+
+Submitting
+----------
+Make sure you have added, committed, and pushed your completed work, e.g.
+
+   git add lab5.cl
+   git commit -m "lab 5 complete"
+   git push
+

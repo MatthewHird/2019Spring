@@ -1,0 +1,5 @@
+Lab 4 Self-Assessment Checklist
+
+ - All Specifications are met
+ - All Requirements are met
+ - All Code Readability, and Comments are met

@@ -1,0 +1,98 @@
+
+This README includes a short overview of the lab0a.cl and lab0b.cl
+   files provided in this repository, plus the requirements for the
+   lab 0 take home exercise.
+
+Supplied files: lab0a.cl, lab0b.cl
+----------------------------------
+
+lab0a.cl is a file in which you will define two lisp functions:
+   sizeof and cumulative.
+
+lab0b.cl is an executable script that currently loads lab0a.cl,
+   accepts any command line arguments provided by the user,
+   and passes them along to a main routine as strings.
+
+   It can be run using
+      ./lab0b.cl
+
+   Currently the main routine also includes examples of using
+   a let block to declare local variables, and of reading values
+   from the strings passed to main.
+
+
+Lab requirements:
+-----------------
+
+Edit the functions in the lab0a.cl and lab0b.cl to meet the specifications
+   provided below.  You may add additional functions to the lab0b.cl file,
+   but not to the lab0a.cl file.
+
+Do not change the names of the two files, and do not change the names
+   of any of the functions provided.
+
+Specifications for sizeof:
+   sizeof expects a single parameter, N
+   The behaviour of sizeof depends on the datatype of the parameter passed:
+    - if N is a number:
+         sizeof returns the value of N
+    - if N is a list:
+         sizeof returns the length of N
+    - if N is anything else:
+         sizeof returns 0
+   This function must NOT produce any output.
+
+Specifications for cumulative:
+    cumulative expects three numeric parameters, A, B, C.
+    If one or more of the parameters are non-numeric then
+       the function returns the value 'ERROR
+    otherwise the function returns the sum of the three parameters.
+    This function must NOT produce any output.
+
+Specifications for main:
+    1. main expects a single list parameter (in this case, containing
+       any command line arguments passed from the user)
+    2. main uses a let block to declare three local variables, X, Y, Z
+    3. if the user provided any command line arguments they are assigned
+       to X, Y, and Z in order.  e.g. if the user ran the script using
+          ./lab0b.cl 10 27
+       then 10 is assigned to X, 27 to Y, and no value is yet set in Z
+    4. if the user provided fewer than three command line arguments,
+       the user is prompted to provide any remaining values needed
+       (e.g. a value for Z in the example from step 3)
+    5. main displays the sizes of X, Y, and Z
+    6. main then calls the cumulative function, passing it the "sizeof"
+       each of the three variables, X, Y, and Z
+    7. finally, main displays the value returned from cumulative, in the form
+          "The cumulative size of X, Y, and Z is: R"
+
+Submitting the lab:
+-------------------
+
+To submit the lab for grading, be sure to perform all the following once your lab is complete:
+
+   git add lab0a.cl
+   git add lab0b.cl
+   git commit -m "lab0 complete"
+   git push
+
+Sample runs:
+------------
+Below are shown two sample runs of the script
+
+   ./lab1b.cl "(1 2 3)" 2.5 "Hello" 
+   The size of (1 2 3) is 3 
+   The size of 2.5 is 2.5 
+   The size of HELLO is 0 
+   The cumulative size of (1 2 3), 2.5, and HELLO is: 5.5 
+
+   ./lab1b.cl 100 
+   Please enter a number or a list 
+   nil 
+   Please enter a number or a list 
+   () 
+   The size of 100 is 100 
+   The size of NIL is 0 
+   The size of NIL is 0 
+   The cumulative size of 100, NIL and NIL is: 100 
+

@@ -1,0 +1,610 @@
+/*
+    author: Matthew Hird
+    csciId: hirdm
+    date: Apr 12, 2019
+    links: 
+*/
+
+.no-js .top-bar {
+    display: none;
+}
+
+@media screen and (min-width: 40em) {
+    .no-js .top-bar {
+        display: block;
+    }
+
+    .no-js .title-bar {
+        display: none;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+h1 {
+    color: white;
+}
+
+body {
+    background-color: #090909;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+
+    background-color: black;
+    color: #DDDDDD;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-top: 1px solid white;
+}
+
+table {
+    margin: 0;
+    color: black;
+}
+
+hr {
+    margin: 10px 0;
+    width: 341px;
+}
+
+.title-bar {
+    border-bottom: 1px solid white;
+}
+
+.top-bar {
+    border-bottom: 1px solid #666;
+}
+
+#topNav.top-bar, #topNav.top-bar ul.menu {
+    background-color: #BBB;
+}
+
+.tn-siteLogo-container {
+    line-height: 38px;
+}
+
+.tn-siteLogo {
+    vertical-align: middle;
+}
+
+@media (max-width:459px) {
+    #topNav a.tn-menu-item, #topNav button.tn-menu-item {
+        font-size: 14px;
+        padding: 10px 10px;
+    }
+}
+
+@media (max-width:359px) {
+    #topNav a.tn-menu-item, #topNav button.tn-menu-item {
+        font-size: 12px;
+        padding: 8px 8px;
+    }
+
+    .title-bar-title {
+        font-size: 14px;
+    }
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-y {
+    width: 100%;
+    height: 100%;
+}
+
+
+.display-container {
+    text-align: center;
+    vertical-align: top;
+}
+
+.display-container-ib {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    vertical-align: top;
+}
+
+.standard-layout {
+    display: inline-block;
+    margin: 30px;
+    padding: 30px;
+    background-color: #12124f;
+    border: 1px solid #666;
+}
+
+.ship-info-div {
+    display: inline-block;
+    box-shadow: 0 0 5px black;
+    line-height: 0;
+    margin: 15px; 
+}
+
+.ship-stats-div {
+    display: inline-block;
+    box-shadow: 0 0 5px black; 
+    line-height: 0;
+    margin: 15px;
+}
+
+.pilot-list-div {
+    display: inline-block;
+    box-shadow: 0 0 5px black; 
+    margin: 15px;
+    line-height: 0;
+}
+
+.pilot-card-div {
+    display: inline-block;
+    box-shadow: 0 0 5px black; 
+    margin: 15px;
+    line-height: 0;
+}
+
+.maneuver-div {
+    display: inline-block;
+    background-color: #333;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px black; 
+}
+
+.maneuver-header-outer {
+    margin-top: -10px;
+    margin-bottom: 5px; 
+}
+
+.maneuver-header-inner {
+    display: inline-block;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 0 5px;
+}
+
+.action-div {
+    display: inline-block;
+    background-color: black;
+    margin: 15px;
+    padding: 5px;
+    border: 2px solid white;
+    box-shadow: 0 0 5px black; 
+}
+
+.action-header {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+
+.upgrade-div {
+    display: inline-block;
+    background-color: black;
+    margin: 15px;
+    padding: 0 5px 5px;
+    border: 2px solid white;
+    box-shadow: 0 0 5px black; 
+}
+
+.upgrade-header {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+
+/* START Maneuver Dial Table */
+.mdt {
+    display: inline-block;
+    line-height: 0;
+}
+
+div.mdt-cell:first-child {
+    background-color: #333;
+}
+
+.mdt-cell {
+    background-color: #202020;
+    display: inline-block;
+    line-height: 0;
+    border: 4px inset #666666;
+}
+/* END Maneuver Dial Table */
+
+/* START Upgrade Bar */
+.upb {
+    display: inline-block;
+    line-height: 0;
+    border:2px solid #666666;
+    margin: 5px;
+    text-align: left;
+}
+
+.upb-cell {
+    background-color: #303030;
+    display: inline-block;
+    line-height: 0;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+/* END Upgrade Bar */
+
+/* START Action Bar */
+.acb {
+    display: inline-block;
+    line-height: 0;
+    border:2px solid #000000;
+    margin: 5px;
+}
+
+.acb-cell {
+    background-color: #FFFFFF;
+    display: inline-block;
+    line-height: 0;
+    width: 50px;
+    height: 50px;
+    /*padding: 5px;*/
+}
+/* END Action Bar */
+
+/* START Pilot List Table */
+.plt {
+    display: inline-block;
+    line-height: 1;
+    margin: 0;
+    text-align: left;
+}
+
+.plt-table {
+    border-collapse: collapse;
+}
+
+.plt-head-row {
+    background-color: black;
+    color: white;
+}
+
+.plt-row {
+
+}
+
+.plt-head-cell {
+    border: 1px solid #dddddd;
+    padding: 6px 4px;
+
+}
+
+.plt-cell {
+    border: 1px solid #dddddd;
+    font-size: 14px;
+    padding: 4px;
+}
+
+.plt-ps-cell {
+    text-align: center;
+}
+
+th.plt-na-cell {
+    text-align: left;
+    padding-left: 32px;
+}
+
+.plt-na-cell {
+    padding-left: 0;
+    width: 245px;
+}
+
+.plt-el-cell {
+    text-align: center;
+}
+
+th.plt-pc-cell {
+    text-align: center;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.plt-pc-cell {
+    text-align: center;
+}
+
+.plt-uni-inbl {
+    display: inline-block;
+    width: 32px;
+    text-align: center;
+}
+/* END Pilot List Table */
+
+/* START Ship Stat Table */
+.sst {
+    display: inline-block;
+    line-height: 1.2;
+    margin: 0;
+    text-align: left;
+}
+
+.sst-table {
+    border-collapse: collapse;
+}
+
+.sst-head-row {
+
+}
+
+.sst-head-cell {
+    color: white;
+    background-color: black;
+    font-size: 16px;
+    padding: 6px;
+}
+
+.sst-cell {
+    border: 1px solid #dddddd;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    /*text-shadow: 0px 1px 1px black, 1px 0px 1px black, -1px 0px 1px black, 0px -1px 1px black;*/
+    /*background-color: #333;*/
+}
+
+.sst-row:nth-child(odd) {
+    background-color: #EEE;
+}
+
+.sst-row:nth-child(even) {
+    background-color: #C4C4C4;
+}
+
+.sst-name-cell {
+
+}
+
+.sst-value-cell {
+    text-align: center;
+}
+
+.sst-at-row {
+    color: red;
+}
+
+.sst-en-row {
+    color: #444;
+}
+
+.sst-ag-row {
+    color: green;
+}
+
+.sst-hu-row {
+    color: yellow;
+}
+
+.sst-sh-row {
+    color: blue;
+}
+/* END Ship Stat Table */
+
+/* START Ship Info Header */
+.sih {
+    display: inline-block;
+    line-height: 1;
+    margin: 0;
+}
+
+.sih-table {
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.sih-head-cell {
+    width: 95px;
+    text-align: right;
+}
+
+.sih-row {
+
+}
+
+.sih-cell {
+    border: 1px solid #dddddd;
+}
+
+.sih-name-cell {
+
+}
+
+.sih-value-cell {
+    width: 215px;
+    text-align: left;
+}
+/* END Ship Info Header */
+
+/* START Pilot Card Table */
+.pct {
+    display: inline-block;
+    line-height: 1;
+    margin: 0;
+}
+
+.pct-table {
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.pct-head-row {
+    background-color: black;
+    color: white;
+}
+
+.pct-row {
+
+}
+
+.pct-name-cell {
+    border: 1px solid #dddddd;
+    padding: 6px 4px;
+
+    width: 100px;
+    text-align: right;
+
+}
+
+.pct-cell {
+    border: 1px solid #dddddd;
+}
+
+.pct-value-cell {
+    width: 210px;
+}
+
+/* END Pilot Card Table */
+
+
+.form-wrapper {
+    padding: 20px 30px;
+}
+
+#searchForm {
+    display: inline-block;
+    line-height: 1;
+    /*font-size: 14;*/
+    /*width: 80%;*/
+}
+
+#searchForm .input-group-label, 
+#searchForm .input-group-field 
+{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    line-height: 1;
+    height: auto;
+}
+
+#searchForm .input-group-label {
+    width: 115px;
+}
+
+#searchForm select {
+    /*width: 200px;*/
+}
+
+#attackGroup input {
+    width: 100px;
+}
+
+#searchForm input[type='number'] {
+    width: 50px;
+}
+
+#searchForm input[type='text'] {
+    width: 250px;
+}
+
+#addProductForm {
+    display: inline-block;
+    line-height: 1;
+    /*font-size: 14;*/
+    /*width: 80%;*/
+}
+
+#addProductForm .input-group-label, 
+#addProductForm .input-group-field 
+{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    line-height: 1;
+    height: auto;
+}
+
+#addProductForm .input-group-label {
+    width: 170px;
+}
+
+#addProductForm select {
+    /*width: 200px;*/
+}
+
+#attackGroup input {
+    width: 100px;
+}
+
+#addProductForm input[type='number'] {
+    width: 50px;
+}
+
+#addProductForm input[type='text'] {
+    width: 250px;
+}
+
+#confirmHeader h2 {
+    font-size: 18px;
+    text-align: center;
+}
+
+#confirmHeader hr {
+    width: 100%;
+}
+
+#confirmBox {
+    width: 300px;
+}
+
+.search-result-div {
+
+}
+
+.srt {
+
+}
+
+.srt-table {
+
+}
+
+.srt-s-row {
+
+}
+
+.srt-p-row {
+
+}
+
+.srt-row {
+
+}
+
+.srt-cell {
+
+}
+

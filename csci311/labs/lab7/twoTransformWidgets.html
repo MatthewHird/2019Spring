@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!-- 
+  author: Matthew Hird
+  csciId: hirdm
+  date: Mar 2, 2019
+  links: 
+    cat     >>> https://www.pexels.com/photo/grey-fur-kitten-127028/
+    hippo   >>> https://www.pexels.com/photo/black-hippopotamus-on-green-grass-667201/
+    zebra   >>> https://www.pexels.com/photo/white-and-black-zebra-standing-on-ground-1916645/
+    squirrel>>> https://www.pexels.com/photo/brown-squirrel-above-snow-at-daytime-in-selective-focus-photo-1082179/
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/Lab7Style.css"/>
+    <style>
+      .textDisplay {
+        min-height: 11rem;
+        width: 100%;
+        border: 1px solid black;
+      }
+      .errorMessage {
+        color: red;
+        display: inline-block;
+        padding: 0 4px;
+      }
+    </style>
+    <script>
+      var myTransformer;
+      var myTransformer2;
+      function init() {
+        myTransformer = new Transformer("myTransformer", "textTansformDisplay");
+        myTransformer2 = new Transformer("myTransformer2", "textTansformDisplay2");
+      };
+    </script>
+
+    <title>Lab 7 2x Transformers - Matt's CSCI 311</title>
+  </head>
+  <body onload="init()">
+    <header>
+      <h1>Double Transformifiers</h1>
+      <ul class="myNav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Lab7.html">Transformer</a></li>
+        <li><a href="twoTransformWidgets.html">Two Transformers</a></li>
+      </ul>
+    </header>
+    
+    <main>
+      <!-- Image and div+text transformer form -->
+      <form id="myTransformer" class="transformer"> 
+        
+        <div class="transformImage">
+          
+          <h2>Your Image</h2>
+          <div class="imageDisplay" id="animalImageDisplay">
+            <img id="catImage" src="media/cat.jpeg" alt="a derppy cat" style="display: inline-block;" />
+            <img id="hippoImage" src="media/hippo.jpeg" alt="a majestic hippo" style="display: none;" />
+            <img id="zebraImage" src="media/zebra.jpeg" alt="a screaming zebra" style="display: none;" />
+            <img id="squirrelImage" src="media/squirrel.jpeg" alt="a squirrel" style="display: none;" />
+          </div>
+
+          <h2>Transform Your Image</h2>
+          <fieldset class="transformImageRadio">
+            <h3>Select Your Animal</h3>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiCatRadio" name="tiRadio" checked="checked" value="catImage" 
+                    onchange="myTransformer.displayImage()" />
+              <label for="tiCatRadio">Cat</label>
+            </div>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiHippoRadio" name="tiRadio" value="hippoImage" 
+                    onchange="myTransformer.displayImage()" />
+              <label for="tiHippoRadio">Hippo</label>
+            </div>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiZebraRadio" name="tiRadio" value="zebraImage" 
+                    onchange="myTransformer.displayImage()" />
+              <label for="tiZebraRadio">Zebra</label>
+            </div>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiSquirrelRadio" name="tiRadio" value="squirrelImage" 
+                    onchange="myTransformer.displayImage()" />
+              <label for="tiSquirrelRadio">Squirrel</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="transformImageType">
+            <label for="tiTypeField">Please select transformation type:</label>
+            <input type="text" id="tiTypeField" name="tiTypeField" placeholder="2D or 3D" />
+            <span class="invalidTransformationType errorMessage"></span>
+          </fieldset>
+
+          <fieldset class="transformImageButtons">
+            <input type="button" name="tiGo" value="Transform" onclick="myTransformer.goTransformImage()" />
+            <input type="button" name="tiReset" value="Reset Image" onclick="myTransformer.resetTransformImage()" />
+          </fieldset>
+        </div>
+        
+        <!-- Div and text transformer -->
+        <div class="transformDivText">
+          <h2>Make Some Text</h2>
+
+          <fieldset class="transformDivTextWord">
+            <label for="tdtWordField">Enter a Word</label>
+            <input type="text" id="tdtWordField" name="tdtWordField" value="bananas" />
+            <span class="invalidWord errorMessage"></span>
+          </fieldset>
+          
+          <fieldset class="transformDivTextTextButtons">
+            <input type="button" name="tdtAddText" value="Add to Div" onclick="myTransformer.addText()" />
+            <input type="button" name="tdtClearText" value="Clear Text" onclick="myTransformer.clearText()" />
+          </fieldset>
+
+          <fieldset class="transformDivTextColour">
+            <div class="transformDivTextColourSelector colourSelector1">    
+              <label for="tdtColourSelect1">Colour 1</label>
+              <select id="tdtColourSelect1" name="tdtColourSelect1" onchange="myTransformer.colour1Update()">
+                <option value="blank" selected="selected">&lt;Pick a colour&gt;</option>
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="magenta">magenta</option>
+                <option value="lime">lime</option>
+                <option value="yellow">yellow</option>
+                <option value="purple">purple</option>
+                <option value="orange">orange</option>
+              </select>
+              <span class="invalidColour1 errorMessage"></span>
+            </div>
+
+            <div class="transformDivTextColourSelector colourSelector2">
+              <label for="tdtColourSelect2">Colour 2</label>
+              <select id="tdtColourSelect2" name="tdtColourSelect2" disabled="disabled" 
+                    onchange="myTransformer.colour2Update()">
+                <option value="blank" selected="selected">&lt;Pick a colour&gt;</option>
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="magenta">magenta</option>
+                <option value="lime">lime</option>
+                <option value="yellow">yellow</option>
+                <option value="purple">purple</option>
+                <option value="orange">orange</option>
+              </select>
+              <span class="invalidColour2 errorMessage"></span>
+            </div>
+          </fieldset>
+
+          <fieldset class="transformDivTextSkew">
+            <label for="tdtSkewControl">Skew</label>
+            <input type="number" id="tdtSkewControl" name="tdtSkewControl" value="0" min="0" max="360" />
+            <span class="invalidSkew errorMessage"></span>
+          </fieldset>
+
+          <fieldset class="transformDivTextGoButtons">
+            <input type="button" name="tdtGo" value="Transform Text" onclick="myTransformer.textTransform()" />
+          </fieldset>
+
+          <fieldset>
+            <input type="button" name="resetForm" value="Reset Form" onclick="myTransformer.resetTransformer()" />
+          </fieldset>
+        </div>
+
+      </form>
+
+      <h2>Transformed Text</h2>
+      <div id="textTansformDisplay" class="textDisplay">
+      </div>
+
+
+
+      <!-- 2nd independent Transformer on same page -->
+      <form id="myTransformer2" class="transformer"> 
+        
+        <div class="transformImage">
+          
+          <h2>Your Image</h2>
+          <div class="imageDisplay" id="animalImageDisplay2">
+            <img id="catImage2" src="media/cat.jpeg" alt="a derppy cat" style="display: inline-block;" />
+            <img id="hippoImage2" src="media/hippo.jpeg" alt="a majestic hippo" style="display: none;" />
+            <img id="zebraImage2" src="media/zebra.jpeg" alt="a screaming zebra" style="display: none;" />
+            <img id="squirrelImage2" src="media/squirrel.jpeg" alt="a squirrel" style="display: none;" />
+          </div>
+
+          <h2>Transform Your Image</h2>
+          <fieldset class="transformImageRadio">
+            <h3>Select Your Animal</h3>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiCatRadio2" name="tiRadio2" checked="checked" value="catImage2" 
+                    onchange="myTransformer2.displayImage()" />
+              <label for="tiCatRadio2">Cat</label>
+            </div>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiHippoRadio2" name="tiRadio2" value="hippoImage2" 
+                    onchange="myTransformer2.displayImage()" />
+              <label for="tiHippoRadio2">Hippo</label>
+            </div>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiZebraRadio2" name="tiRadio2" value="zebraImage2" 
+                    onchange="myTransformer2.displayImage()" />
+              <label for="tiZebraRadio2">Zebra</label>
+            </div>
+            <div class="transformImageRadioControl">
+              <input type="radio" id="tiSquirrelRadio2" name="tiRadio2" value="squirrelImage2" 
+                    onchange="myTransformer2.displayImage()" />
+              <label for="tiSquirrelRadio2">Squirrel</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="transformImageType">
+            <label for="tiTypeField2">Please select transformation type:</label>
+            <input type="text" id="tiTypeField2" name="tiTypeField2" placeholder="2D or 3D" />
+            <span class="invalidTransformationType errorMessage"></span>
+          </fieldset>
+
+          <fieldset class="transformImageButtons">
+            <input type="button" name="tiGo2" value="Transform" onclick="myTransformer2.goTransformImage()" />
+            <input type="button" name="tiReset2" value="Reset Image" onclick="myTransformer2.resetTransformImage()" />
+          </fieldset>
+        </div>
+        
+        <!-- Div and text transformer -->
+        <div class="transformDivText">
+          <h2>Make Some Text</h2>
+
+          <fieldset class="transformDivTextWord">
+            <label for="tdtWordField2">Enter a Word</label>
+            <input type="text" id="tdtWordField2" name="tdtWordField2" value="cheesecake" />
+            <span class="invalidWord errorMessage"></span>
+          </fieldset>
+          
+          <fieldset class="transformDivTextTextButtons">
+            <input type="button" name="tdtAddText2" value="Add to Div" onclick="myTransformer2.addText()" />
+            <input type="button" name="tdtClearText2" value="Clear Text" onclick="myTransformer2.clearText()" />
+          </fieldset>
+
+          <fieldset class="transformDivTextColour">
+            <div class="transformDivTextColourSelector colourSelector1">    
+              <label for="tdtColourSelect12">Colour 1</label>
+              <select id="tdtColourSelect12" name="tdtColourSelect12" onchange="myTransformer2.colour1Update()">
+                <option value="blank" selected="selected">&lt;Pick a colour&gt;</option>
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="magenta">magenta</option>
+                <option value="lime">lime</option>
+                <option value="yellow">yellow</option>
+                <option value="purple">purple</option>
+                <option value="orange">orange</option>
+              </select>
+              <span class="invalidColour1 errorMessage"></span>
+            </div>
+
+            <div class="transformDivTextColourSelector colourSelector2">
+              <label for="tdtColourSelect22">Colour 2</label>
+              <select id="tdtColourSelect22" name="tdtColourSelect22" disabled="disabled" 
+                    onchange="myTransformer2.colour2Update()">
+                <option value="blank" selected="selected">&lt;Pick a colour&gt;</option>
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="magenta">magenta</option>
+                <option value="lime">lime</option>
+                <option value="yellow">yellow</option>
+                <option value="purple">purple</option>
+                <option value="orange">orange</option>
+              </select>
+              <span class="invalidColour2 errorMessage"></span>
+            </div>
+          </fieldset>
+
+          <fieldset class="transformDivTextSkew">
+            <label for="tdtSkewControl2">Skew</label>
+            <input type="number" id="tdtSkewControl2" name="tdtSkewControl2" value="0" min="0" max="360" />
+            <span class="invalidSkew errorMessage"></span>
+          </fieldset>
+
+          <fieldset class="transformDivTextGoButtons">
+            <input type="button" name="tdtGo2" value="Transform Text" onclick="myTransformer2.textTransform()" />
+          </fieldset>
+
+          <fieldset>
+            <input type="button" name="resetForm2" value="Reset Form" onclick="myTransformer2.resetTransformer()" />
+          </fieldset>
+        </div>
+      </form>
+
+      <h2>Transformed Text</h2>
+      <div id="textTansformDisplay2" class="textDisplay">
+      </div>
+
+    </main>
+
+    <footer>
+        <small>Copyright &copy; Matthew Hird, 2019</small>
+    </footer>
+    <script src="js/Lab7.js"></script>
+  </body>
+</html>
